@@ -2,14 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="copyright" content="MACode ID, https://macodeid.com/">
-
-    <title>Sistem Perpustakaan</title>
+    <meta charset="UTF-8" />
+    <title>Login | Perpustakaan</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="PBP, Lab A2, Form, tugas, praktikum, pemrograman berbasis platform, informatika, undip, universitas diponegoro" name="keywords" />
+    <meta content="Tugas Mini Project PBP Kelas A" name="description" />
+    <meta property="og:title" content="Kelas A" />
+    <meta property="og:description" content="Tugas Mini Project PBP Kelas A" />
+    <meta name="title" content="Kelas A" />
+    <meta name="description" content="Tugas Mini Project PBP Kelas A" />
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
