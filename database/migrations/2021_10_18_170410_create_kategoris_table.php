@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetailTransaksisTable extends Migration
+class CreateKategorisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateDetailTransaksisTable extends Migration
      */
     public function up()
     {
-        Schema::create('detail_transaksis', function (Blueprint $table) {
-            $table->id();
+        Schema::create('kategoris', function (Blueprint $table) {
+            $table->id('idkategori');
+            $table->string('nama');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateDetailTransaksisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_transaksis');
+        Schema::dropIfExists('kategoris');
     }
 }

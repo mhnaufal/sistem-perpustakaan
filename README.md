@@ -20,6 +20,8 @@ composer install
 ```
 
 #### 4. Copy file .env.example dan kasih nama .env
+Buat terlebih dahulu database dengan nama sistem-perpustakaan
+
 ```
 cp .env.example .env
 ```
@@ -29,7 +31,7 @@ Edit konfigurasi di .env yang udah dibuat:
 - DB_PORT=3306
 - DB_DATABASE=sistem-perpustakaan
 
-In the example above we create database named sistem-perpustakaan which runs on Localhost (127.0.0.1) on port 3306
+In the example above we create a database called sistem-perpustakaan which runs on Localhost (127.0.0.1) port 3306
 
 #### 5. Generate secret key buat laravel
 ```
