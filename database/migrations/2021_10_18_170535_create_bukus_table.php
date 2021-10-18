@@ -22,7 +22,7 @@ class CreateBukusTable extends Migration
             $table->string('penerbit');
             $table->string('kota_penerbit');
             $table->string('editor');
-            $table->binary('file_gambar');
+            $table->binary('file_gambar')->nullable();
             $table->timestamps();
             $table->integer('stok');
             $table->integer('stok_tersedia');

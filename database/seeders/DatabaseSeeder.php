@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Kategori;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +14,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\Petugas::factory(1)->create();
+        \App\Models\Anggota::factory(3)->create();
+        
+        $novel = new Kategori([
+            'nama' => 'novel'
+        ]);
+        $novel->save();
+        
+        $fiksi = new Kategori([
+            'nama' => 'fiksi'
+        ]);
+        $fiksi->save();
+
+        $cerpen = new Kategori([
+            'nama' => 'cerpen'
+        ]);
+        $cerpen->save();
+        
+        \App\Models\Buku::factory(10)->create();
     }
 }

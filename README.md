@@ -1,13 +1,13 @@
-#### 0. Download & install [git](https://git-scm.com/)
+#### 0. Download & install [git](https://git-scm.com/). Buka cmd atau powershell atau terminal
 
-#### 1. Clone
+#### 1. Clone repository sistem-perpustakaan ini dengan cara
 ```
 git clone https://github.com/mhnaufal/sistem-perpustakaan.git
 ```
 
 atau
 
-download manual as [zip](https://github.com/mhnaufal/sistem-perpustakaan/archive/refs/heads/main.zip)
+download manual sebagai [zip](https://github.com/mhnaufal/sistem-perpustakaan/archive/refs/heads/main.zip) , tapi tidak direkomendasikan!
 
 #### 2. pindah ke direktori sistem-perpustakaan
 ```
@@ -40,13 +40,13 @@ php artisan key:generate
 
 #### 6. Jalankan migrasi database
 ```
-php artisan migrate
+php artisan migrate:fresh --seed
 ```
 
 or (optional)
 
 ```
-php artisan migrate:fresh --seed
+php artisan migrate
 ```
 
 #### 7. Jalankan Laravel
