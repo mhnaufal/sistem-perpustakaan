@@ -120,7 +120,6 @@
         </div> <!-- .container -->
     </div> <!-- .page-section -->
 
-
     <footer class="page-footer bg-image" style="background-image: url({{ URL::asset('img/world_pattern.svg') }});">
         <div class="container">
             <div class="row mb-5">
