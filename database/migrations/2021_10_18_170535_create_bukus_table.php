@@ -24,9 +24,9 @@ class CreateBukusTable extends Migration
             $table->string('kota_penerbit');
             $table->string('editor');
             $table->binary('file_gambar')->nullable();
-            $table->timestamp('tgl_insert')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('tgl_insert')->nullable();
             // NOTE: postgres can't have ON UPDATE!
-            $table->timestamp('tgl_update')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('tgl_update')->nullable();
             $table->integer('stok');
             $table->integer('stok_tersedia');
         });
