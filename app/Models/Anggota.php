@@ -13,6 +13,8 @@ class Anggota extends Model
 
     protected $primaryKey = 'nim';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'nama',
         'password',

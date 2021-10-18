@@ -13,6 +13,8 @@ class Buku extends Model
     
     protected $primaryKey = 'idbuku';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'isbn',
         'judul',

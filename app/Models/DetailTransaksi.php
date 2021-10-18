@@ -13,6 +13,8 @@ class DetailTransaksi extends Model
 
     protected $primaryKey = 'idtransaksi';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'idbuku',
         'tgl_kembali',

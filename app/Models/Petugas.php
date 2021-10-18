@@ -13,6 +13,8 @@ class Petugas extends Model
 
     protected $primaryKey = 'idpetugas';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'nama',
         'password',

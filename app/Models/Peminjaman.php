@@ -13,6 +13,8 @@ class Peminjaman extends Model
 
     protected $primaryKey = 'idtransaksi';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'nim',
         'tgl_pinjam',
