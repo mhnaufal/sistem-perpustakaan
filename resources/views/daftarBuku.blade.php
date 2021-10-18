@@ -2,14 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="copyright" content="MACode ID, https://macodeid.com/">
-
-    <title>Sistem Perpustakaan</title>
+    <meta charset="UTF-8" />
+    <title>Daftar Buku | Perpustakaan</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="PBP, Lab A2, Form, tugas, praktikum, pemrograman berbasis platform, informatika, undip, universitas diponegoro" name="keywords" />
+    <meta content="Tugas Mini Project PBP Kelas A" name="description" />
+    <meta property="og:title" content="Kelas A" />
+    <meta property="og:description" content="Tugas Mini Project PBP Kelas A" />
+    <meta name="title" content="Kelas A" />
+    <meta name="description" content="Tugas Mini Project PBP Kelas A" />
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -43,85 +45,64 @@
                 <div class="navbar-collapse collapse" id="navbarContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" href="/">Welcome...!</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-primary ml-lg-2" href="{{ route('login') }}">Login</a>
+                            {{-- TODO: kasih nama user yang login --}}
+                            {{-- <a class="btn btn-primary ml-lg-2" href="{{ route('login') }}">Login</a> --}}
                         </li>
                     </ul>
                 </div>
 
             </div>
         </nav>
-
-        <div class="container">
-            <div class="page-banner home-banner">
-                <div class="row align-items-center flex-wrap-reverse h-100">
-                    <div class="col-md-6 py-5 wow fadeInLeft">
-                        <h1 class="mb-4">Perpustakaan!</h1>
-                        <p class="text-lg text-grey mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
-                            quae veritatis natus! Facere sunt</p>
-                    </div>
-                    <div class="col-md-6 py-5 wow zoomIn">
-                        <div class="img-fluid text-center">
-                            <img src="{{ URL::asset('img/banner_image_1.svg') }}" alt="">
-                        </div>
-                    </div>
-                </div>
-                <a href="#about" class="btn-scroll" data-role="smoothscroll"><span
-                        class="mai-arrow-down"></span></a>
-            </div>
-        </div>
     </header>
 
-    <div class="page-section" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card-service wow fadeInUp">
-                        <div class="header">
-                            <img src="{{ URL::asset('img/services/service-1.svg') }}" alt="">
-                        </div>
-                        <div class="body">
-                            <h5 class="text-secondary">Daftar Jadi Anggota!</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam porro sapiente minima
-                                saepe.</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
-                        </div>
+    <div><br><br></div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">Daftar Buku</div>
+            <div class="card-body">
+                <br>
+                <a class="btn btn-primary mb-2" href="{{ route('view.add.book') }}">+ Tambah Buku</a>
+                @if (Session::has('deleted'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('deleted') }}
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card-service wow fadeInUp">
-                        <div class="header">
-                            <img src="{{ URL::asset('img/services/service-2.svg') }}" alt="">
-                        </div>
-                        <div class="body">
-                            <h5 class="text-secondary">Cari Buku!</h5>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto perferendis nemo
-                                eos. Maiores!</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card-service wow fadeInUp">
-                        <div class="header">
-                            <img src="{{ URL::asset('img/services/service-3.svg') }}" alt="">
-                        </div>
-                        <div class="body">
-                            <h5 class="text-secondary">Pinjam Buku!</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis architecto nesciunt
-                                delectus porrodfdfdf!</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                @endif
+                <table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>ISBN</th>
+                            <th>Author</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{-- @foreach ($books as $book)
+                            <tr>
+                                <td>{{ $book->isbn }}</td>
+                                <td>{{ $book->author }}</td>
+                                <td>{{ $book->title }}</td>
+                                <td>{{ $book->price }}</td>
+                                <td>
+                                    <a class="btn btn-warning btn-sm" href="/edit-book/{{ $book->id }}">Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="/delete-book/{{ $book->id }}">Delete</a>
+                                </td>
+                            </tr>
+                        @endforeach --}}
+                    </tbody>
+                </table>
             </div>
-        </div> <!-- .container -->
-    </div> <!-- .page-section -->
+        </div>
+    </div>
 
+    <div><br><br><br><br><br></div>
 
-    <footer class="page-footer bg-image" style="background-image: url({{ URL::asset('img/world_pattern.svg') }});">
+    <footer class="page-footer mt-5 bg-image" style="background-image: url({{ URL::asset('img/world_pattern.svg') }});">
         <div class="container">
             <div class="row mb-5">
                 <div class="col-lg-5 py-3">

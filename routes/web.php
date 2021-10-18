@@ -13,6 +13,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* Homepage */
 Route::get('/', function () {
     return view('welcome');
+});
+
+/* Login */
+// NOTE: ini hanya sementara karena Controlle belum dibuat
+Route::get('/login', function () {
+    return view('login')->name('login');
+});
+
+/* Petugas */
+
+/* Anggota */
+Route::get('/members', function () {
+    return view('daftarAnggota');
+});
+
+/* Buku */
+// NOTE: ini hanya sementara karena Controlle belum dibuat
+Route::get('/books', function () {
+    return view('daftarBuku');
+});
+
+Route::get('/add-book', [BookController::class, 'viewCreateBook'])->name('view.add.book');
+
+/* Kategori */
+Route::get('/categories', function () {
+    return view('daftarKategori');
 });
