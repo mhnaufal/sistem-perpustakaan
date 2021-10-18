@@ -21,8 +21,8 @@ Route::get('/', function () {
 /* Login */
 // NOTE: ini hanya sementara karena Controlle belum dibuat
 Route::get('/login', function () {
-    return view('login')->name('login');
-});
+    return view('login');
+})->name('login');
 
 /* Petugas */
 
