@@ -7,7 +7,7 @@ git clone https://github.com/mhnaufal/sistem-perpustakaan.git
 
 atau
 
-download manual as zip
+download manual as [zip](https://github.com/mhnaufal/sistem-perpustakaan/archive/refs/heads/main.zip)
 
 #### 2. pindah ke direktori sistem-perpustakaan
 ```
