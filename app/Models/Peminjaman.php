@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Peminjaman extends Model
 {
     use HasFactory;
+
+    protected $table = 'peminjamans';
+
+    protected $primaryKey = 'idtransaksi';
+
+    protected $fillable = [
+        'nim',
+        'tgl_pinjam',
+        'total_denda',
+        'idpetugas',
+    ];
 }

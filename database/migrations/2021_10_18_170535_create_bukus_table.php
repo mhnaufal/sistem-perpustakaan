@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateBukusTable extends Migration
@@ -23,7 +24,8 @@ class CreateBukusTable extends Migration
             $table->string('kota_penerbit');
             $table->string('editor');
             $table->binary('file_gambar')->nullable();
-            $table->timestamps();
+            $table->timestamp('tgl_insert')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('tgl_update')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->integer('stok');
             $table->integer('stok_tersedia');
         });

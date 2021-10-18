@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreatePeminjamansTable extends Migration
@@ -16,7 +17,7 @@ class CreatePeminjamansTable extends Migration
         Schema::create('peminjamans', function (Blueprint $table) {
             $table->bigIncrements('idtransaksi');
             $table->char('nim', 14);
-            $table->timestamps();
+            $table->timestamp('tgl_pinjam')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->integer('total_denda');
             $table->unsignedBigInteger('idpetugas');
             $table->foreign('nim')->references('nim')->on('anggotas')->onDelete('CASCADE');
