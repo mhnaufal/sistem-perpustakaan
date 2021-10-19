@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 /* Homepage */
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('homepage');
 
 /* Login */
 // NOTE: ini hanya sementara karena Controlle belum dibuat
@@ -38,7 +38,8 @@ Route::post('/books', [BookController::class, 'createBook'])->name('add.book');
 
 Route::get('/add-book', [BukuController::class, 'viewCreateBook'])->name('view.add.book');
 
-Route::get('/edit-book', [BukuController::class, 'viewEditBook'])->name('view.edit.book');
+Route::get('/edit-book/{id}', [BukuController::class, 'viewEditBook'])->name('view.edit.book');
+Route::post('/edit-book/{id}', [BookController::class, 'editBook'])->name('edit.book');
 
 /* Kategori */
 Route::get('/categories', function () {

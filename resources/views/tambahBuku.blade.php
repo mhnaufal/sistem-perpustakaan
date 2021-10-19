@@ -47,7 +47,7 @@
                 <div class="navbar-collapse collapse" id="navbarContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link fs-5 fw-bold" href="/"><span class="text-dark">Welcome</span> <span>{{ $user }}</span>!</a>
+                            <a class="nav-link fs-5 fw-bold" href="/"><span class="text-dark">Welcome</span> <span class="text-decoration-underline">{{ $user }}</span>!</a>
                         </li>
                         <li class="nav-item">
                             {{-- TODO: kasih nama user yang login --}}
@@ -64,7 +64,7 @@
 
     <div class="container mt-5">
         <div class="card">
-            <div class="card-header">Tambah Buku Baru</div>
+            <div class="card-header fw-bold fs-4">Tambah Buku Baru</div>
             <div class="card-body">
                 <br>
                 <form action="{{ route('add.book') }}" autocomplete="on" method="post">
@@ -167,8 +167,8 @@
                                     placeholder="Masukkan jumlah yang tersedia buku" required /><br>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Tambah</button>
-                        <a class="btn btn-secondary ms-2" href="{{ route('view.books') }}">Kembali</a>
+                        <a class="btn btn-secondary ms-2 m-1" style="float: right" href="{{ route('view.books') }}">Kembali</a>
+                        <button type="submit" class="btn btn-primary m-1" style="float: right">Tambah</button>
                     </table>
                 </form>
             </div>

@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 class BukuController extends Controller
 {
     /* Menampilkan semua daftar buku yang ada */
-    public function showAllBooks()
+    public function showAllBooks(Request $request)
     {
         $bukus = Buku::get();
-        return view('daftarBuku', compact('bukus'));
+        $user = $request->name ?? "Mawar";
+        return view('daftarBuku', compact('bukus', 'user'));
     }
 
     /* Menampilkan halaman pembuatan buku baru */
@@ -49,12 +50,33 @@ class BukuController extends Controller
         $book->jumlah = $jumlah;
         $book->stok = $stok;
 
-        $book->save();
-        return redirect()->route('view.books');
+        
+        try {
+            $book->save();
+            return redirect()->route('view.books')->with('success', 'Data buku berhasil ditambahkan!');
+        } catch (\Throwable $th) {
+            return redirect()->route('view.books')->with('error', 'Gagal menambahkan data buku!');
+        }
     }
 
-    public function viewEditBook()
+    public function viewEditBook(Request $request, $id)
     {
-        return view('editBuku');
+        $categories = Kategori::get();
+        $user = $request->name ?? "Mawar";
+        $book = Buku::where('idbuku', $id)->first();
+
+        return view('editBuku', compact('book', 'categories', 'user'));
+    }
+
+    public function editBook(Request $request, $id)
+    {
+        $book = Buku::find($id);
+
+        try {
+            $book->update($request->all());
+            return redirect()->route('view.books')->with('success', 'Data buku berhasil diperbarui!');
+        } catch (\Throwable $th) {
+            return redirect()->route('view.books')->with('error', 'Gagal memperbarui data buku!');
+        }
     }
 }

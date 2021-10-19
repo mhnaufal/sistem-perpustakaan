@@ -33,7 +33,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white sticky" data-offset="500">
             <div class="container">
-                <a href="#" class="navbar-brand">Sistem<span class="text-primary">Perpustakaan.</span></a>
+                <a href="/" class="navbar-brand">Sistem<span class="text-primary">Perpustakaan.</span></a>
 
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent"
                     aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,8 +59,7 @@
                 <div class="row align-items-center flex-wrap-reverse h-100">
                     <div class="col-md-6 py-5 wow fadeInLeft">
                         <h1 class="mb-4">Perpustakaan!</h1>
-                        <p class="text-lg text-grey mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
-                            quae veritatis natus! Facere sunt</p>
+                        <p class="text-lg text-grey mb-5">Where <span class="fw-bold">books</span> find their <span class="fw-bold">readers</span>!</p>
                     </div>
                     <div class="col-md-6 py-5 wow zoomIn">
                         <div class="img-fluid text-center">
@@ -84,8 +83,7 @@
                         </div>
                         <div class="body">
                             <h5 class="text-secondary">Daftar Jadi Anggota!</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam porro sapiente minima
-                                saepe.</p>
+                            <p>Jadilah anggota perpustakaan untuk mendapat jutaan manfaat lainnya dari buku!</p>
                             <a href="#" class="btn btn-primary">Read More</a>
                         </div>
                     </div>
@@ -97,9 +95,8 @@
                         </div>
                         <div class="body">
                             <h5 class="text-secondary">Cari Buku!</h5>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto perferendis nemo
-                                eos. Maiores!</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
+                            <p>Temukan buku-buku yang kamu cari bahkan hingga buku langka sekalipun ada DI SINI!</p>
+                            <a href="{{ route('view.books') }}" class="btn btn-primary">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -110,8 +107,7 @@
                         </div>
                         <div class="body">
                             <h5 class="text-secondary">Pinjam Buku!</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis architecto nesciunt
-                                delectus porrodfdfdf!</p>
+                            <p>Pinjam buku yang kamu inginkan tanpa perlu fotocopy KTP, tinggal sekali klik buku pinjaman sudah ada di genggamanmu!</p>
                             <a href="#" class="btn btn-primary">Read More</a>
                         </div>
                     </div>

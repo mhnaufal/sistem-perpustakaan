@@ -47,7 +47,8 @@
                 <div class="navbar-collapse collapse" id="navbarContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/">Welcome...!</a>
+                            <a class="nav-link fs-5 fw-bold" href="/"><span class="text-dark">Welcome</span> <span
+                                    class="text-decoration-underline">{{ $user }}</span>!</a>
                         </li>
                         <li class="nav-item">
                             {{-- TODO: kasih nama user yang login --}}
@@ -60,11 +61,10 @@
         </nav>
     </header>
 
-    <div><br><br></div>
-
     <div class="container mt-5">
+        <a class="btn btn-success mb-2" href="{{ route('homepage') }}">Home</a>
         <div class="card">
-            <div class="card-header">Daftar Buku</div>
+            <div class="card-header fw-bold fs-4">Daftar Buku</div>
             <div class="card-body">
                 <br>
                 <a class="btn btn-primary mb-2" href="{{ route('view.add.book') }}">+ Tambah Buku</a>
@@ -104,9 +104,9 @@
                                 <td>{{ $buku->stok_tersedia }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-info my-1" style="color: #F6F5FC"
-                                        href="editBuku/{{ $buku->idbuku }}">Edit</a>
+                                        href="edit-book/{{ $buku->idbuku }}">Edit</a>
                                     <a class="btn btn-danger btn-sm" style="color: #F6F5FC"
-                                        href="hapusBuku/{{ $buku->idbuku }}">Hapus</a>
+                                        href="delete-book/{{ $buku->idbuku }}">Hapus</a>
                                 </td>
                             </tr>
                         @endforeach
