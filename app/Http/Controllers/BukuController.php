@@ -79,4 +79,24 @@ class BukuController extends Controller
             return redirect()->route('view.books')->with('error', 'Gagal memperbarui data buku!');
         }
     }
+
+    public function viewDeleteBook(Request $request, $id)
+    {
+        $user = $request->name ?? "Mawar";
+        $book = Buku::find($id);
+
+        return view('hapusBuku', compact('book', 'user'));
+    }
+
+    public function deleteBook(Request $request, $id)
+    {
+        $book = Buku::find($id);
+
+        try {
+            $book->delete();
+            return redirect()->route('view.books')->with('success', 'Data buku berhasil dihapus!');
+        } catch (\Throwable $th) {
+            return redirect()->route('view.books')->with('error', 'Gagal menghapus data buku!');
+        }
+    }
 }
