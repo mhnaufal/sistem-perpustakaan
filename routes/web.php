@@ -34,12 +34,15 @@ Route::get('/members', function () {
 
 /* Buku */
 Route::get('/books', [BukuController::class, 'showAllBooks'])->name('view.books');
-Route::post('/books', [BookController::class, 'createBook'])->name('add.book');
 
 Route::get('/add-book', [BukuController::class, 'viewCreateBook'])->name('view.add.book');
+Route::post('/books', [BukuController::class, 'createBook'])->name('add.book');
 
 Route::get('/edit-book/{id}', [BukuController::class, 'viewEditBook'])->name('view.edit.book');
-Route::post('/edit-book/{id}', [BookController::class, 'editBook'])->name('edit.book');
+Route::post('/edit-book/{id}', [BukuController::class, 'editBook'])->name('edit.book');
+
+Route::get('/delete-book/{id}', [BukuController::class, 'viewDeleteBook'])->name('view.delete.book');
+Route::post('/delete-book/{id}', [BukuController::class, 'deleteBook'])->name('delete.book');
 
 /* Kategori */
 Route::get('/categories', function () {

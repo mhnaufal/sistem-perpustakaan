@@ -61,61 +61,63 @@
         </nav>
     </header>
 
+    <div><br><br></div>
+
     <div class="container mt-5">
-        <a class="btn btn-success mb-2" href="{{ route('homepage') }}">Home</a>
         <div class="card">
-            <div class="card-header fw-bold fs-4">Daftar Buku</div>
+            <div class="card-header fw-bold fs-4">Hapus Buku</div>
             <div class="card-body">
                 <br>
-                <a class="btn btn-primary mb-2" href="{{ route('view.add.book') }}">+ Tambah Buku</a>
-                @if (Session::has('deleted'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('deleted') }}
-                    </div>
-                @endif
-                <table class="table table-stripped">
-                    <tr>
-                        <th>ID</th>
-                        <th>ISBN</th>
-                        <th>Judul</th>
-                        <th>Kategori</th>
-                        <th>Pengarang</th>
-                        <th>Penerbit</th>
-                        <th>Kota</th>
-                        <th>Editor</th>
-                        <th>Gambar</th>
-                        <th>Jumlah</th>
-                        <th>Stok</th>
-                        <th>Aksi</th>
-                    </tr>
-                    @if ($bukus->isNotEmpty())
-                        @foreach ($bukus as $buku)
-                            <tr>
-                                <td>{{ $buku->idbuku }}</td>
-                                <td>{{ $buku->isbn }}</td>
-                                <td>{{ $buku->judul }}</td>
-                                <td>@if ($buku->idkategori == 1) Novel @elseif ($buku->idkategori == 1) Fiksi @else Cerpen @endif</td>
-                                <td>{{ $buku->pengarang }}</td>
-                                <td>{{ $buku->penerbit }}</td>
-                                <td>{{ $buku->kota_penerbit }}</td>
-                                <td>{{ $buku->editor }}</td>
-                                <td>{{ $buku->file_gambar }}</td>
-                                <td>{{ $buku->stok }}</td>
-                                <td>{{ $buku->stok_tersedia }}</td>
-                                <td>
-                                    <a class="btn btn-sm btn-info my-1" style="color: #F6F5FC"
-                                        href="edit-book/{{ $buku->idbuku }}">Edit</a>
-                                    <a class="btn btn-danger btn-sm" style="color: #F6F5FC"
-                                        href="delete-book/{{ $buku->idbuku }}">Hapus</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <div>
-                            <p class="card-text">Buku saat ini sedang kosong!</p>
+                <form action="{{ route('delete.book', $book->idbuku) }}" autocomplete="on" method="post">
+                    @csrf
+                    @if (session('errors'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            ERROR:
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                     @endif
-                </table>
+                    @if (Session::has('success'))
+                        <div class="alert alert-success">
+                            {{ Session::get('success') }}
+                        </div>
+                    @endif
+                    @if (Session::has('error'))
+                        <div class="alert alert-danger">
+                            {{ Session::get('error') }}
+                        </div>
+                    @endif
+
+                    <table class="table">
+                        <tr>
+                            <th>ID</th>
+                            <th>ISBN</th>
+                            <th>Judul</th>
+                            <th>Kategori</th>
+                            <th>Pengarang</th>
+                            <th>Penerbit</th>
+                            <th>Aksi</th>
+                        </tr>
+                        <tr>
+                            <td>{{ $book->idbuku }}</td>
+                            <td>{{ $book->isbn }}</td>
+                            <td>{{ $book->judul }}</td>
+                            <td>@if ($book->idkategori == 1) Novel @elseif ($book->idkategori == 1) Fiksi @else Cerpen @endif</td>
+                            <td>{{ $book->pengarang }}</td>
+                            <td>{{ $book->penerbit }}</td>
+                        </tr>
+                        <p>Yakin ingin menghapus buku <span class="fw-bold fs-5">{{ $book->judul }}</span> karya <span class="fw-bold fs-5">{{ $book->pengarang }}</span>?</p>
+                        <a class="btn btn-secondary ms-2 m-1" href="{{ route('view.books') }}"
+                            style="float: right">Kembali</a>
+                        <button type="submit" class="btn btn-danger m-1" style="float: right">Hapus</button>
+                    </table>
+                </form>
             </div>
         </div>
     </div>
