@@ -28,6 +28,8 @@ Buat terlebih dahulu database dengan nama sistem-perpustakaan
 cp .env.example .env
 ```
 
+Kalau gak bisa pake perintah cp, copas manual aja file .env.example-nya, kasih nama .env 
+
 Edit konfigurasi di .env yang udah dibuat:
 - DB_HOST=127.0.0.1
 - DB_PORT=3306
