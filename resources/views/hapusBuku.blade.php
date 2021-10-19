@@ -102,7 +102,6 @@
                             <th>Kategori</th>
                             <th>Pengarang</th>
                             <th>Penerbit</th>
-                            <th>Aksi</th>
                         </tr>
                         <tr>
                             <td>{{ $book->idbuku }}</td>
