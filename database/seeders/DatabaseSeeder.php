@@ -18,17 +18,17 @@ class DatabaseSeeder extends Seeder
         \App\Models\Anggota::factory(3)->create();
         
         $novel = new Kategori([
-            'nama' => 'novel'
+            'nama' => 'Novel'
         ]);
         $novel->save();
         
         $fiksi = new Kategori([
-            'nama' => 'fiksi'
+            'nama' => 'Fiksi'
         ]);
         $fiksi->save();
 
         $cerpen = new Kategori([
-            'nama' => 'cerpen'
+            'nama' => 'Cerpen'
         ]);
         $cerpen->save();
         

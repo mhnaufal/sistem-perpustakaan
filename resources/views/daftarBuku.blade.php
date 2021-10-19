@@ -6,7 +6,9 @@
     <title>Daftar Buku | Perpustakaan</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta content="PBP, Lab A2, Form, tugas, praktikum, pemrograman berbasis platform, informatika, undip, universitas diponegoro" name="keywords" />
+    <meta
+        content="PBP, Lab A2, Form, tugas, praktikum, pemrograman berbasis platform, informatika, undip, universitas diponegoro"
+        name="keywords" />
     <meta content="Tugas Mini Project PBP Kelas A" name="description" />
     <meta property="og:title" content="Kelas A" />
     <meta property="og:description" content="Tugas Mini Project PBP Kelas A" />
@@ -60,7 +62,7 @@
 
     <div><br><br></div>
 
-    <div class="container">
+    <div class="container mt-5">
         <div class="card">
             <div class="card-header">Daftar Buku</div>
             <div class="card-body">
@@ -72,29 +74,47 @@
                     </div>
                 @endif
                 <table class="table table-stripped">
-                    <thead>
-                        <tr>
-                            <th>ISBN</th>
-                            <th>Author</th>
-                            <th>Title</th>
-                            <th>Price</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{-- @foreach ($books as $book)
+                    <tr>
+                        <th>id</th>
+                        <th>ISBN</th>
+                        <th>Judul</th>
+                        <th>Kategori</th>
+                        <th>Pengarang</th>
+                        <th>Penerbit</th>
+                        <th>Kota</th>
+                        <th>Editor</th>
+                        <th>Gambar</th>
+                        <th>Jumlah</th>
+                        <th>Stok</th>
+                        <th>Aksi</th>
+                    </tr>
+                    @if ($bukus->isNotEmpty())
+                        @foreach ($bukus as $buku)
                             <tr>
-                                <td>{{ $book->isbn }}</td>
-                                <td>{{ $book->author }}</td>
-                                <td>{{ $book->title }}</td>
-                                <td>{{ $book->price }}</td>
+                                <td>{{ $buku->idbuku }}</td>
+                                <td>{{ $buku->isbn }}</td>
+                                <td>{{ $buku->judul }}</td>
+                                <td>@if ($buku->idkategori == 1) Novel @elseif ($buku->idkategori == 1) Fiksi @else Cerpen @endif</td>
+                                <td>{{ $buku->pengarang }}</td>
+                                <td>{{ $buku->penerbit }}</td>
+                                <td>{{ $buku->kota_penerbit }}</td>
+                                <td>{{ $buku->editor }}</td>
+                                <td>{{ $buku->file_gambar }}</td>
+                                <td>{{ $buku->stok }}</td>
+                                <td>{{ $buku->stok_tersedia }}</td>
                                 <td>
-                                    <a class="btn btn-warning btn-sm" href="/edit-book/{{ $book->id }}">Edit</a>
-                                    <a class="btn btn-danger btn-sm" href="/delete-book/{{ $book->id }}">Delete</a>
+                                    <a class="btn btn-sm btn-info my-1" style="color: #F6F5FC"
+                                        href="editBuku/{{ $buku->idbuku }}">Edit</a>
+                                    <a class="btn btn-danger btn-sm" style="color: #F6F5FC"
+                                        href="hapusBuku/{{ $buku->idbuku }}">Hapus</a>
                                 </td>
                             </tr>
-                        @endforeach --}}
-                    </tbody>
+                        @endforeach
+                    @else
+                        <div>
+                            <p class="card-text">Buku saat ini sedang kosong!</p>
+                        </div>
+                    @endif
                 </table>
             </div>
         </div>
@@ -102,7 +122,8 @@
 
     <div><br><br><br><br><br></div>
 
-    <footer class="page-footer mt-5 bg-image" style="background-image: url({{ URL::asset('img/world_pattern.svg') }});">
+    <footer class="page-footer mt-5 bg-image"
+        style="background-image: url({{ URL::asset('img/world_pattern.svg') }});">
         <div class="container">
             <div class="row mb-5">
                 <div class="col-lg-5 py-3">
@@ -124,7 +145,8 @@
                     <ul class="footer-menu">
                         <li><a href="#">Hendinur Faizal - <span style="color: #35bb78">24060119130053</span></a></li>
                         <li><a href="#">Imas Ayu Wardani - <span style="color: #35bb78">24060119120005</span></a></li>
-                        <li><a href="#">Muhammad Naufal Pratama - <span style="color: #35bb78">24060119130056</span></a></li>
+                        <li><a href="#">Muhammad Naufal Pratama - <span style="color: #35bb78">24060119130056</span></a>
+                        </li>
                         <li><a href="#">Safira Marsha - <span style="color: #35bb78">24060119140111</span></a></li>
                         <li><a href="#">Adinda Rosman - <span style="color: #35bb78">24060119130085</span></a></li>
                     </ul>
