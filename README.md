@@ -1,4 +1,6 @@
-#### 0. Download & install [git](https://git-scm.com/). Buka cmd atau powershell atau terminal
+## Cara nge run
+
+#### 0. Download & install [git](https://git-scm.com/). Buka cmd atau powershell atau terminal...
 
 #### 1. Clone repository sistem-perpustakaan ini dengan cara
 ```
@@ -26,7 +28,9 @@ Buat terlebih dahulu database dengan nama sistem-perpustakaan
 cp .env.example .env
 ```
 
-Edit konfigurasi di .env yang udah dibuat:
+Kalau gak bisa pake perintah _cp_, copas manual aja file **.env.example**-nya kemudian kasih nama **.env** 
+
+Edit konfigurasi di **.env** yang udah dibuat:
 - DB_HOST=127.0.0.1
 - DB_PORT=3306
 - DB_DATABASE=sistem-perpustakaan

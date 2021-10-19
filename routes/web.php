@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BukuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 /* Homepage */
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('homepage');
 
 /* Login */
 // NOTE: ini hanya sementara karena Controlle belum dibuat
@@ -32,12 +33,13 @@ Route::get('/members', function () {
 });
 
 /* Buku */
-// NOTE: ini hanya sementara karena Controlle belum dibuat
-Route::get('/books', function () {
-    return view('daftarBuku');
-});
+Route::get('/books', [BukuController::class, 'showAllBooks'])->name('view.books');
+Route::post('/books', [BookController::class, 'createBook'])->name('add.book');
 
-Route::get('/add-book', [BookController::class, 'viewCreateBook'])->name('view.add.book');
+Route::get('/add-book', [BukuController::class, 'viewCreateBook'])->name('view.add.book');
+
+Route::get('/edit-book/{id}', [BukuController::class, 'viewEditBook'])->name('view.edit.book');
+Route::post('/edit-book/{id}', [BookController::class, 'editBook'])->name('edit.book');
 
 /* Kategori */
 Route::get('/categories', function () {
