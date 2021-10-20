@@ -47,11 +47,12 @@
                 <div class="navbar-collapse collapse" id="navbarContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link fs-5 fw-bold" href="/"><span class="text-dark">Welcome</span> <span class="text-decoration-underline">{{ $user }}</span>!</a>
-                        </li>
-                        <li class="nav-item">
-                            {{-- TODO: kasih nama user yang login --}}
-                            {{-- <a class="btn btn-primary ml-lg-2" href="{{ route('login') }}">Login</a> --}}
+                            <form method="POST" autocomplete="on" action="{{ route('logout') }}">
+                                @csrf
+                                <button class="nav-link fs-5 fw-bold btn btn-primary"><span
+                                        class="text-dark">Welcome</span> <span
+                                        class="text-decoration-underline text-light">{{ $user }}</span>!</button>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -70,17 +71,11 @@
                 <form action="{{ route('add.book') }}" autocomplete="on" method="post">
                     @csrf
                     @if (session('errors'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ERROR:
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     @endif
                     @if (Session::has('success'))
                         <div class="alert alert-success">
@@ -122,28 +117,32 @@
                             <label for="pengarang" class="col-sm-2 col-form-label">Pengarang : </label>
                             <div class="col-sm-10">
                                 <input type="text" name="pengarang" id="pengarang" class="form-control"
-                                    placeholder="Masukkan nama pengarang buku" value="{{ $book->pengarang }}" required /><br>
+                                    placeholder="Masukkan nama pengarang buku" value="{{ $book->pengarang }}"
+                                    required /><br>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="penerbit" class="col-sm-2 col-form-label">Penerbit : </label>
                             <div class="col-sm-10">
                                 <input type="text" name="penerbit" id="penerbit" class="form-control"
-                                    placeholder="Masukkan nama penerbit buku" value="{{ $book->penerbit }}" required /><br>
+                                    placeholder="Masukkan nama penerbit buku" value="{{ $book->penerbit }}"
+                                    required /><br>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="kota" class="col-sm-2 col-form-label">Kota : </label>
                             <div class="col-sm-10">
                                 <input type="text" name="kota" id="kota" class="form-control"
-                                    placeholder="Masukkan kota penerbit buku" value="{{ $book->kota_penerbit }}" required /><br>
+                                    placeholder="Masukkan kota penerbit buku" value="{{ $book->kota_penerbit }}"
+                                    required /><br>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="editor" class="col-sm-2 col-form-label">Editor : </label>
                             <div class="col-sm-10">
                                 <input type="text" name="editor" id="editor" class="form-control"
-                                    placeholder="Masukkan nama editor buku" value="{{ $book->editor }}" required /><br>
+                                    placeholder="Masukkan nama editor buku" value="{{ $book->editor }}"
+                                    required /><br>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -164,10 +163,12 @@
                             <label for="tersedia" class="col-sm-2 col-form-label">Jumlah : </label>
                             <div class="col-sm-10">
                                 <input type="number" name="tersedia" id="tersedia" class="form-control"
-                                    placeholder="Masukkan jumlah yang tersedia buku" value="{{ $book->stok_tersedia }}" required /><br>
+                                    placeholder="Masukkan jumlah yang tersedia buku"
+                                    value="{{ $book->stok_tersedia }}" required /><br>
                             </div>
                         </div>
-                        <a class="btn btn-secondary ms-2 m-1" href="{{ route('view.books') }}" style="float: right">Kembali</a>
+                        <a class="btn btn-secondary ms-2 m-1" href="{{ route('view.books') }}"
+                            style="float: right">Kembali</a>
                         <button type="submit" class="btn btn-primary m-1" style="float: right">Perbarui</button>
                     </table>
                 </form>

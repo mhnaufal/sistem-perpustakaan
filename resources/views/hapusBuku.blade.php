@@ -47,12 +47,12 @@
                 <div class="navbar-collapse collapse" id="navbarContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link fs-5 fw-bold" href="/"><span class="text-dark">Welcome</span> <span
-                                    class="text-decoration-underline">{{ $user }}</span>!</a>
-                        </li>
-                        <li class="nav-item">
-                            {{-- TODO: kasih nama user yang login --}}
-                            {{-- <a class="btn btn-primary ml-lg-2" href="{{ route('login') }}">Login</a> --}}
+                            <form method="POST" autocomplete="on" action="{{ route('logout') }}">
+                                @csrf
+                                <button class="nav-link fs-5 fw-bold btn btn-primary"><span
+                                        class="text-dark">Welcome</span> <span
+                                        class="text-decoration-underline text-light">{{ $user }}</span>!</button>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -71,17 +71,11 @@
                 <form action="{{ route('delete.book', $book->idbuku) }}" autocomplete="on" method="post">
                     @csrf
                     @if (session('errors'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ERROR:
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     @endif
                     @if (Session::has('success'))
                         <div class="alert alert-success">
@@ -111,7 +105,9 @@
                             <td>{{ $book->pengarang }}</td>
                             <td>{{ $book->penerbit }}</td>
                         </tr>
-                        <p>Yakin ingin menghapus buku <span class="fw-bold fs-5">{{ $book->judul }}</span> karya <span class="fw-bold fs-5">{{ $book->pengarang }}</span>?</p>
+                        <p>Yakin ingin menghapus buku <span class="fw-bold fs-5">{{ $book->judul }}</span> karya
+                            <span class="fw-bold fs-5">{{ $book->pengarang }}</span>?
+                        </p>
                         <a class="btn btn-secondary ms-2 m-1" href="{{ route('view.books') }}"
                             style="float: right">Kembali</a>
                         <button type="submit" class="btn btn-danger m-1" style="float: right">Hapus</button>

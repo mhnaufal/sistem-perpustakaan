@@ -47,12 +47,12 @@
                 <div class="navbar-collapse collapse" id="navbarContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link fs-5 fw-bold" href="/"><span class="text-dark">Welcome</span> <span
-                                    class="text-decoration-underline">{{ $user }}</span>!</a>
-                        </li>
-                        <li class="nav-item">
-                            {{-- TODO: kasih nama user yang login --}}
-                            {{-- <a class="btn btn-primary ml-lg-2" href="{{ route('login') }}">Login</a> --}}
+                            <form method="POST" autocomplete="on" action="{{ route('logout') }}">
+                                @csrf
+                                <button class="nav-link fs-5 fw-bold btn btn-primary"><span
+                                        class="text-dark">Welcome</span> <span
+                                        class="text-decoration-underline text-light">{{ $user }}</span>!</button>
+                            </form>
                         </li>
                     </ul>
                 </div>
