@@ -24,6 +24,7 @@ class PetugasFactory extends Factory
     {
         return [
             'nama' => $this->faker->name,
+            'email' => $this->faker->unique()->email(),
             'password' => Hash::make('12341234'),
         ];
     }
