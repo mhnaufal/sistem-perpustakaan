@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-lg-5 py-3">
-                <h3>Perpustakaan</h3>
+                <h3 class="text-decoration-underline">SiPerpus</h3>
                 <p>Tugas Pengembangan Berbasis Platform A</p>
 
                 <div class="social-media-button">
