@@ -63,7 +63,7 @@
                                     </div>
                                 @endif
                                 <div class="form-group mb-3">
-                                    <label for="username">Username</label>
+                                    <label for="username">Email</label>
                                     <input type="email" class="form-control" id="email" name="email" size="30"
                                         required autofocus placeholder="Email">
                                 </div>
