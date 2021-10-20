@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BukuController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,15 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* Homepage */
+
 Route::get('/', function () {
     return view('welcome');
 })->name('homepage');
 
-/* Login */
-// NOTE: ini hanya sementara karena Controlle belum dibuat
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+/* Autentikasi */
+Route::get('/login', [AuthController::class, 'viewLogin'])->name('view.login');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /* Petugas */
 

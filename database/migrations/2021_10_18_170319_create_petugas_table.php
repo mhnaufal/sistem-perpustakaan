@@ -15,8 +15,10 @@ class CreatePetugasTable extends Migration
     {
         Schema::create('petugas', function (Blueprint $table) {
             $table->bigIncrements('idpetugas');
-            $table->string('nama');
+            $table->string('nama')->unique();
+            $table->string('email')->unique();
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

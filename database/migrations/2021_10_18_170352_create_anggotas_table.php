@@ -15,12 +15,13 @@ class CreateAnggotasTable extends Migration
     {
         Schema::create('anggotas', function (Blueprint $table) {
             $table->char('nim', 14)->primary();
-            $table->string('nama');
+            $table->string('nama')->unique();
             $table->string('password');
             $table->string('alamat');
             $table->string('kota');
             $table->string('email')->unique();
             $table->string('no_telp')->unique();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

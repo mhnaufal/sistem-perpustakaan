@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Buku;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BukuController extends Controller
 {
@@ -12,8 +13,13 @@ class BukuController extends Controller
     public function showAllBooks(Request $request)
     {
         $bukus = Buku::get();
-        $user = $request->name ?? "Mawar";
-        return view('daftarBuku', compact('bukus', 'user'));
+        
+        if (Auth::guard('anggota')->check() || Auth::guard('petugas')->check()) {
+            $user = Auth::guard('petugas')->user()->nama ?? Auth::guard('anggota')->user()->nama ?? 'Mawar';
+            return view('daftarBuku', compact('bukus', 'user'));
+        } else {
+            return redirect('login')->with('error', 'Anda belum login!');
+        }
     }
 
     /* Menampilkan halaman pembuatan buku baru */
@@ -50,7 +56,7 @@ class BukuController extends Controller
         $book->jumlah = $jumlah;
         $book->stok = $stok;
 
-        
+
         try {
             $book->save();
             return redirect()->route('view.books')->with('success', 'Data buku berhasil ditambahkan!');
