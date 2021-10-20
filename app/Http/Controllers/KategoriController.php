@@ -20,4 +20,85 @@ class KategoriController extends Controller
             return redirect('login')->with('error', 'Anda belum login!');
         }
     }
+
+    public function viewCreateCategory(Request $request)
+    {
+        if (Auth::guard('petugas')->check()) {
+            $categories = Kategori::get();
+            $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
+
+            return view('tambahKategori', compact('categories', 'user'));
+        } else {
+            return back()->with('error', '👮 Hanya petugas yang bisa menambah buku!');
+        }
+    }
+
+    public function createCategory(Request $request)
+    {
+        $nama = $request->kategori;
+
+        $category = new Kategori();
+        $category->nama = $nama;
+
+        try {
+            $category->save();
+            return redirect()->route('view.categories')->with('success', 'Kategori berhasil ditambahkan!');
+        } catch (\Throwable $th) {
+            return redirect()->route('view.categories')->with('error', 'Gagal menambahkan kategori!');
+        }
+    }
+
+    public function viewEditCategory(Request $request, $id)
+    {
+        if (Auth::guard('petugas')->check()) {
+            $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
+            $category = Kategori::where('idkategori', $id)->first();
+
+            return view('editKategori', compact('category', 'user'));
+        } else {
+            return back()->with('error', '👮 Hanya petugas yang bisa mengedit buku!');
+        }
+
+    }
+
+    /* Proses pengeditan buku */
+    public function editCategory(Request $request, $id)
+    {
+        $category = Kategori::where('idkategori', $id);
+
+        try {
+            $category->update(['nama' => $request->kategori]);
+            return redirect()->route('view.categories')->with('success', 'Kategori berhasil diperbarui!');
+        } catch (\Throwable $th) {
+            return redirect()->route('view.categories')->with('error', 'Gagal memperbarui kategori!');
+        }
+    }
+
+    /* Menampilkan halaman hapus kategori */
+    public function viewDeleteCategory(Request $request, $id)
+    {
+        if (Auth::guard('petugas')->check()) {
+            $categories = Kategori::get();
+            $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
+
+            $category = Kategori::find($id);
+
+            return view('hapusKategori', compact('category', 'user'));
+        } else {
+            return back()->with('error', '👮 Hanya petugas yang bisa menghapus buku!');
+        }
+    }
+
+    /* Proses menghapus buku */
+    public function deleteCategory(Request $request, $id)
+    {
+        $category = Kategori::find($id);
+
+        try {
+            $category->delete();
+            return redirect()->route('view.categories')->with('success', 'Kategori berhasil dihapus!');
+        } catch (\Throwable $th) {
+            return redirect()->route('view.categories')->with('error', 'Gagal menghapus kategori!');
+        }
+    }
 }

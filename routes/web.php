@@ -52,3 +52,12 @@ Route::post('/delete-book/{id}', [BukuController::class, 'deleteBook'])->name('d
 
 /* Kategori */
 Route::get('/categories', [KategoriController::class, 'showAllCategories'])->name('view.categories');
+
+Route::get('/add-category', [KategoriController::class, 'viewCreateCategory'])->name('view.add.category');
+Route::post('/categories', [KategoriController::class, 'createCategory'])->name('add.category');
+
+Route::get('/edit-category/{id}', [KategoriController::class, 'viewEditCategory'])->name('view.edit.category');
+Route::post('/edit-category/{id}', [KategoriController::class, 'editCategory'])->name('edit.category');
+
+Route::get('/delete-category/{id}', [KategoriController::class, 'viewDeleteCategory'])->name('view.delete.category');
+Route::post('/delete-category/{id}', [KategoriController::class, 'deleteCategory'])->name('delete.category');

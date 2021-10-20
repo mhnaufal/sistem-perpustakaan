@@ -40,10 +40,10 @@
 
     <div class="container mt-5">
         <div class="card">
-            <div class="card-header fw-bold fs-4">Edit Kategori</div>
+            <div class="card-header fw-bold fs-4">Hapus Kategori</div>
             <div class="card-body">
                 <br>
-                <form action="{{ route('edit.category', $category->idkategori) }}" autocomplete="on" method="post">
+                <form action="{{ route('delete.category', $category->idkategori) }}" autocomplete="on" method="post">
                     @csrf
                     @if (session('errors'))
                         <ul>
@@ -64,16 +64,19 @@
                     @endif
 
                     <table class="table">
-                        <div class="form-group row">
-                            <label for="kategori" class="col-sm-2 col-form-label">Kategori : </label>
-                            <div class="col-sm-10">
-                                <input type="text" name="kategori" id="kategori" class="form-control"
-                                    placeholder="Masukkan kategori" value="{{ $category->nama }}" required /><br>
-                            </div>
-                        </div>
+                        <tr>
+                            <th>ID</th>
+                            <th>Kategori</th>
+                        </tr>
+                        <tr>
+                            <td>{{ $category->idkategori }}</td>
+                            <td>{{ $category->nama }}</td>
+
+                        </tr>
+                        <p>Yakin ingin menghapus kategori <span class="fw-bold fs-5">{{ $category->nama }}</span>?</p>
                         <a class="btn btn-secondary ms-2 m-1" href="{{ route('view.categories') }}"
                             style="float: right">Kembali</a>
-                        <button type="submit" class="btn btn-primary m-1" style="float: right">Perbarui</button>
+                        <button type="submit" class="btn btn-danger m-1" style="float: right">Hapus</button>
                     </table>
                 </form>
             </div>

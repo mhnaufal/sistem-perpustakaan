@@ -38,12 +38,12 @@
 
     <div class="container mt-5">
         <a class="btn btn-success mb-2" href="{{ route('homepage') }}">🏠 Home</a>
-        <a class="btn btn-success mb-2" href="{{ route('dashboard') }}">💠 Dashbaord</a>
+        <a class="btn btn-success mb-2" href="{{ route('dashboard') }}">💠 Dashboard</a>
         <div class="card">
             <div class="card-header fw-bold fs-4">Daftar Kategori</div>
             <div class="card-body">
                 <br>
-                <a class="btn btn-primary mb-2" href="{{ route('view.add.book') }}">➕ Tambah Kategori</a>
+                <a class="btn btn-primary mb-2" href="{{ route('view.add.category') }}">➕ Tambah Kategori</a>
                 @if (Session::has('success'))
                     <div class="alert alert-success">
                         {{ Session::get('success') }}
@@ -62,38 +62,22 @@
                 <table class="table table-stripped">
                     <tr>
                         <th>ID</th>
-                        <th>ISBN</th>
-                        <th>Judul</th>
                         <th>Kategori</th>
-                        <th>Pengarang</th>
-                        <th>Penerbit</th>
-                        <th>Kota</th>
-                        <th>Editor</th>
-                        <th>Gambar</th>
-                        <th>Jumlah</th>
-                        <th>Stok</th>
+
                         <th>Aksi</th>
                     </tr>
                     @if ($categories->isNotEmpty())
                         @foreach ($categories as $buku)
                             <tr>
-                                <td>{{ $buku->idbuku }}</td>
-                                <td>{{ $buku->isbn }}</td>
-                                <td>{{ $buku->judul }}</td>
-                                <td>@if ($buku->idkategori == 1) Novel @elseif ($buku->idkategori == 1) Fiksi @else Cerpen @endif</td>
-                                <td>{{ $buku->pengarang }}</td>
-                                <td>{{ $buku->penerbit }}</td>
-                                <td>{{ $buku->kota_penerbit }}</td>
-                                <td>{{ $buku->editor }}</td>
-                                <td>{{ $buku->file_gambar }}</td>
-                                <td>{{ $buku->stok }}</td>
-                                <td>{{ $buku->stok_tersedia }}</td>
+                                <td>{{ $buku->idkategori }}</td>
+                                <td>{{ $buku->nama }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-info my-1" style="color: #F6F5FC"
-                                        href="edit-book/{{ $buku->idbuku }}">🔧Edit</a>
+                                        href="edit-category/{{ $buku->idkategori }}">🔧Edit</a>
                                     <a class="btn btn-danger btn-sm" style="color: #F6F5FC"
-                                        href="delete-book/{{ $buku->idbuku }}">🗑️Hapus</a>
+                                        href="delete-category/{{ $buku->idkategori }}">🗑️Hapus</a>
                                 </td>
+
                             </tr>
                         @endforeach
                     @else
