@@ -50,8 +50,8 @@
                             <form method="POST" autocomplete="on" action="{{ route('logout') }}">
                                 @csrf
                                 <button class="nav-link fs-5 fw-bold btn btn-primary"><span
-                                        class="text-dark">Welcome</span> <span
-                                        class="text-decoration-underline text-light">{{ $user }}</span>!</button>
+                                    class="text-dark ">Selamat datang</span> <span
+                                    class="text-decoration-underline text-light">{{ $user }}❤️</span></button>
                             </form>
                         </li>
                     </ul>

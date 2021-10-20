@@ -50,8 +50,8 @@
                             <form method="POST" autocomplete="on" action="{{ route('logout') }}">
                                 @csrf
                                 <button class="nav-link fs-5 fw-bold btn btn-primary"><span
-                                        class="text-dark">Welcome</span> <span
-                                        class="text-decoration-underline text-light">{{ $user }}</span>!</button>
+                                        class="text-dark ">Selamat datang</span> <span
+                                        class="text-decoration-underline text-light">{{ $user }}❤️</span></button>
                             </form>
                         </li>
                     </ul>
@@ -62,12 +62,22 @@
     </header>
 
     <div class="container mt-5">
-        <a class="btn btn-success mb-2" href="{{ route('homepage') }}">Home</a>
+        <a class="btn btn-success mb-2" href="{{ route('homepage') }}">🏠 Home</a>
         <div class="card">
             <div class="card-header fw-bold fs-4">Daftar Buku</div>
             <div class="card-body">
                 <br>
-                <a class="btn btn-primary mb-2" href="{{ route('view.add.book') }}">+ Tambah Buku</a>
+                <a class="btn btn-primary mb-2" href="{{ route('view.add.book') }}">➕ Tambah Buku</a>
+                @if (Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+                @if (Session::has('error'))
+                    <div class="alert alert-danger">
+                        {{ Session::get('error') }}
+                    </div>
+                @endif
                 @if (Session::has('deleted'))
                     <div class="alert alert-success" role="alert">
                         {{ Session::get('deleted') }}
@@ -104,9 +114,9 @@
                                 <td>{{ $buku->stok_tersedia }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-info my-1" style="color: #F6F5FC"
-                                        href="edit-book/{{ $buku->idbuku }}">Edit</a>
+                                        href="edit-book/{{ $buku->idbuku }}">🔧Edit</a>
                                     <a class="btn btn-danger btn-sm" style="color: #F6F5FC"
-                                        href="delete-book/{{ $buku->idbuku }}">Hapus</a>
+                                        href="delete-book/{{ $buku->idbuku }}">🗑️Hapus</a>
                                 </td>
                             </tr>
                         @endforeach

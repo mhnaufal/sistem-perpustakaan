@@ -25,9 +25,14 @@ class BukuController extends Controller
     /* Menampilkan halaman pembuatan buku baru */
     public function viewCreateBook(Request $request)
     {
-        $categories = Kategori::get();
-        $user = $request->name ?? "Mawar";
-        return view('tambahBuku', compact('categories', 'user'));
+        if (Auth::guard('petugas')->check()) {
+            $categories = Kategori::get();
+            $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
+
+            return view('tambahBuku', compact('categories', 'user'));
+        } else {
+            return back()->with('error', '👮 Hanya petugas yang bisa menambah buku!');
+        }
     }
 
     /* Proses membuat buku baru */
@@ -65,15 +70,22 @@ class BukuController extends Controller
         }
     }
 
+    /* Menampilkan halaman edit buku */
     public function viewEditBook(Request $request, $id)
     {
-        $categories = Kategori::get();
-        $user = $request->name ?? "Mawar";
-        $book = Buku::where('idbuku', $id)->first();
+        if (Auth::guard('petugas')->check()) {
+            $categories = Kategori::get();
+            $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
+            $book = Buku::where('idbuku', $id)->first();
 
-        return view('editBuku', compact('book', 'categories', 'user'));
+            return view('editBuku', compact('book', 'categories', 'user'));
+        } else {
+            return back()->with('error', '👮 Hanya petugas yang bisa mengedit buku!');
+        }
+
     }
 
+    /* Proses pengeditan buku */
     public function editBook(Request $request, $id)
     {
         $book = Buku::find($id);
@@ -86,14 +98,21 @@ class BukuController extends Controller
         }
     }
 
+    /* Menampilkan halaman hapus buku */
     public function viewDeleteBook(Request $request, $id)
     {
-        $user = $request->name ?? "Mawar";
-        $book = Buku::find($id);
+        if (Auth::guard('petugas')->check()) {
+            $categories = Kategori::get();
+            $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
+            $book = Buku::find($id);
 
-        return view('hapusBuku', compact('book', 'user'));
+            return view('hapusBuku', compact('book', 'user'));
+        } else {
+            return back()->with('error', '👮 Hanya petugas yang bisa menghapus buku!');
+        }
     }
 
+    /* Proses menghapus buku */
     public function deleteBook(Request $request, $id)
     {
         $book = Buku::find($id);
