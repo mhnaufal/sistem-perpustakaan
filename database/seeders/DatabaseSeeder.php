@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Kategori;
 use App\Models\Petugas;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
         $petugas = new Petugas([
             'nama' => 'Suhell',
-            'password' => '12341234',
+            'password' => Hash::make('12341234'),
             'email' => 'suhell@unchdeep.ac.id'
         ]);
         $petugas->save();

@@ -91,7 +91,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Email" type="email" required
+                                        <input class="form-control" placeholder="Email" type="email" name="email" required
                                             autofocus>
                                     </div>
                                 </div>
@@ -100,7 +100,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Password" type="password" required>
+                                        <input class="form-control" placeholder="Password" type="password" name="password" required>
                                     </div>
                                 </div>
                                 <div class="d-flex mb-5 align-items-center">
