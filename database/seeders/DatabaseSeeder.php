@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Kategori;
+use App\Models\Petugas;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +17,13 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\Petugas::factory(1)->create();
         \App\Models\Anggota::factory(3)->create();
+
+        $petugas = new Petugas([
+            'nama' => 'Suhell',
+            'password' => '12341234',
+            'email' => 'suhell@unchdeep.ac.id'
+        ]);
+        $petugas->save();
         
         $novel = new Kategori([
             'nama' => 'Novel'

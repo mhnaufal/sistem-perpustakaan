@@ -63,7 +63,7 @@
                                     </div>
                                 @endif
                                 <div class="form-group mb-3">
-                                    <label for="username">Username</label>
+                                    <label for="username">Email</label>
                                     <input type="email" class="form-control" id="email" name="email" size="30"
                                         required autofocus placeholder="Email">
                                 </div>
@@ -83,6 +83,8 @@
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btn-sm fw-bold" style="float: right"
                                         name="submit" value="submit">Login</button>
+                                    <a class="btn btn-secondary btn-sm mr-2" href="{{ route('homepage') }}"
+                                        style="float: right">Kembali</a>
                                 </div>
                             </form>
                         </div>

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,12 +28,15 @@ Route::get('/login', [AuthController::class, 'viewLogin'])->name('view.login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+/* Dashboard */
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
 /* Petugas */
 
 /* Anggota */
 Route::get('/members', function () {
     return view('daftarAnggota');
-});
+})->name('view.members');
 
 /* Buku */
 Route::get('/books', [BukuController::class, 'showAllBooks'])->name('view.books');
@@ -46,6 +51,4 @@ Route::get('/delete-book/{id}', [BukuController::class, 'viewDeleteBook'])->name
 Route::post('/delete-book/{id}', [BukuController::class, 'deleteBook'])->name('delete.book');
 
 /* Kategori */
-Route::get('/categories', function () {
-    return view('daftarKategori');
-});
+Route::get('/categories', [KategoriController::class, 'showAllCategories'])->name('view.categories');

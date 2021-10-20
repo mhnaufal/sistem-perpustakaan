@@ -34,40 +34,26 @@
     <!-- Back to top button -->
     <div class="back-to-top"></div>
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white sticky" data-offset="500">
-            <div class="container">
-                <a href="#" class="navbar-brand">Sistem<span class="text-primary">Perpustakaan.</span></a>
-
-                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent"
-                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="navbar-collapse collapse" id="navbarContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <form method="POST" autocomplete="on" action="{{ route('logout') }}">
-                                @csrf
-                                <button class="nav-link fs-5 fw-bold btn btn-primary"><span
-                                        class="text-dark">Welcome</span> <span
-                                        class="text-decoration-underline text-light">{{ $user }}</span>!</button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </nav>
-    </header>
+    @include('header')
 
     <div class="container mt-5">
-        <a class="btn btn-success mb-2" href="{{ route('homepage') }}">Home</a>
+        <a class="btn btn-success mb-2" href="{{ route('homepage') }}">🏠 Home</a>
+        <a class="btn btn-success mb-2" href="{{ route('dashboard') }}">💠 Dashbaord</a>
         <div class="card">
             <div class="card-header fw-bold fs-4">Daftar Buku</div>
             <div class="card-body">
                 <br>
-                <a class="btn btn-primary mb-2" href="{{ route('view.add.book') }}">+ Tambah Buku</a>
+                <a class="btn btn-primary mb-2" href="{{ route('view.add.book') }}">➕ Tambah Buku</a>
+                @if (Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+                @if (Session::has('error'))
+                    <div class="alert alert-danger">
+                        {{ Session::get('error') }}
+                    </div>
+                @endif
                 @if (Session::has('deleted'))
                     <div class="alert alert-success" role="alert">
                         {{ Session::get('deleted') }}
@@ -104,9 +90,9 @@
                                 <td>{{ $buku->stok_tersedia }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-info my-1" style="color: #F6F5FC"
-                                        href="edit-book/{{ $buku->idbuku }}">Edit</a>
+                                        href="edit-book/{{ $buku->idbuku }}">🔧Edit</a>
                                     <a class="btn btn-danger btn-sm" style="color: #F6F5FC"
-                                        href="delete-book/{{ $buku->idbuku }}">Hapus</a>
+                                        href="delete-book/{{ $buku->idbuku }}">🗑️Hapus</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -122,41 +108,7 @@
 
     <div><br><br><br><br><br></div>
 
-    <footer class="page-footer mt-5 bg-image"
-        style="background-image: url({{ URL::asset('img/world_pattern.svg') }});">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-5 py-3">
-                    <h3>Perpustakaan</h3>
-                    <p>Tugas Pengembangan Berbasis Platform A</p>
-
-                    <div class="social-media-button">
-                        <a href="#"><span class="mai-logo-facebook-f"></span></a>
-                        <a href="#"><span class="mai-logo-twitter"></span></a>
-                        <a href="#"><span class="mai-logo-google-plus-g"></span></a>
-                        <a href="#"><span class="mai-logo-instagram"></span></a>
-                        <a href="#"><span class="mai-logo-youtube"></span></a>
-                    </div>
-                </div>
-                <br>
-                <div class="col-lg-4 py-3">
-                    <h3>Anggota Kelompok 11</h3>
-                    <h5>Cenayang PBP</h5>
-                    <ul class="footer-menu">
-                        <li><a href="#">Hendinur Faizal - <span style="color: #35bb78">24060119130053</span></a></li>
-                        <li><a href="#">Imas Ayu Wardani - <span style="color: #35bb78">24060119120005</span></a></li>
-                        <li><a href="#">Muhammad Naufal Pratama - <span style="color: #35bb78">24060119130056</span></a>
-                        </li>
-                        <li><a href="#">Safira Marsha - <span style="color: #35bb78">24060119140111</span></a></li>
-                        <li><a href="#">Adinda Rosman - <span style="color: #35bb78">24060119130085</span></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <p class="text-center" id="copyright">Copyright &copy; 2020. This template design and develop by <a
-                    href="https://macodeid.com/" target="_blank">MACode ID</a></p>
-        </div>
-    </footer>
+    @include('footer')
 
     <link rel="stylesheet" href="{{ URL::asset('js/jquery3.min.js') }}">
 

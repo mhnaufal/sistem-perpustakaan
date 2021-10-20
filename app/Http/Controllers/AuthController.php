@@ -27,14 +27,13 @@ class AuthController extends Controller
         }
 
         if (Auth::guard('anggota')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('view.books');
+            return redirect()->route('dashboard');
         }
         elseif (Auth::guard('petugas')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            // return redirect()->intended('books');
-            return redirect()->route('view.books');
+            return redirect()->route('dashboard');
         }
 
-        return back()->withInput($request->only('email', 'remember'));
+        return back()->withInput($request->only('email', 'remember'))->with('error', 'Anda belum terdaftar di SisPerpus!');
     }
 
     public function logout(Request $request)
@@ -44,6 +43,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('login')->with('success', 'Logout berhasil');
+        return redirect('login')->with('success', 'Logout berhasil! Sampai jumpa di lain waktu😁😁😁');
     }
 }
