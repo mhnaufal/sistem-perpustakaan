@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Anggota extends Model
+class Anggota extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $table = 'anggotas';
 
@@ -22,6 +24,10 @@ class Anggota extends Model
         'kota',
         'email',
         'no_telp',
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token',
     ];
 
 }
