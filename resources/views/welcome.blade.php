@@ -59,7 +59,7 @@
                 <div class="row align-items-center flex-wrap-reverse h-100">
                     <div class="col-md-6 py-5 wow fadeInLeft">
                         <h1 class="mb-4">Perpustakaan!</h1>
-                        <p class="text-lg text-grey mb-5">Where <span class="fw-bold">books</span> find their <span class="fw-bold">readers</span>!</p>
+                        <p class="text-lg text-grey mb-5">Where <span class="fw-bold">books 📚</span> find their <span class="fw-bold">readers 😁</span>!</p>
                     </div>
                     <div class="col-md-6 py-5 wow zoomIn">
                         <div class="img-fluid text-center">
@@ -83,8 +83,8 @@
                         </div>
                         <div class="body">
                             <h5 class="text-secondary">Daftar Jadi Anggota!</h5>
-                            <p>Jadilah anggota perpustakaan untuk mendapat jutaan manfaat lainnya dari buku!</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
+                            <p>Jadilah anggota perpustakaan dan dapatkan jutaan manfaat dari buku di seluruh dunia!</p>
+                            <a href="#" class="btn btn-primary">Baca Lebih Lanjut!</a>
                         </div>
                     </div>
                 </div>
@@ -95,8 +95,8 @@
                         </div>
                         <div class="body">
                             <h5 class="text-secondary">Cari Buku!</h5>
-                            <p>Temukan buku-buku yang kamu cari bahkan hingga buku langka sekalipun ada DI SINI!</p>
-                            <a href="{{ route('view.books') }}" class="btn btn-primary">Read More</a>
+                            <p>Temukan buku-buku yang kamu cari hingga buku langka sekalipun, ada DI SINI!</p>
+                            <a href="{{ route('view.books') }}" class="btn btn-primary">Baca Lebih Lanjut!</a>
                         </div>
                     </div>
                 </div>
@@ -107,8 +107,8 @@
                         </div>
                         <div class="body">
                             <h5 class="text-secondary">Pinjam Buku!</h5>
-                            <p>Pinjam buku yang kamu inginkan tanpa perlu fotocopy KTP, tinggal sekali klik buku pinjaman sudah ada di genggamanmu!</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
+                            <p>Pinjam buku yang kamu inginkan tanpa perlu fotocopy KTP, tinggal sekali klik buku yang kamu sudah ada di genggamanmu!</p>
+                            <a href="#" class="btn btn-primary">Baca Lebih Lanjut!</a>
                         </div>
                     </div>
                 </div>
@@ -116,39 +116,7 @@
         </div> <!-- .container -->
     </div> <!-- .page-section -->
 
-    <footer class="page-footer bg-image" style="background-image: url({{ URL::asset('img/world_pattern.svg') }});">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-5 py-3">
-                    <h3>Perpustakaan</h3>
-                    <p>Tugas Pengembangan Berbasis Platform A</p>
-
-                    <div class="social-media-button">
-                        <a href="#"><span class="mai-logo-facebook-f"></span></a>
-                        <a href="#"><span class="mai-logo-twitter"></span></a>
-                        <a href="#"><span class="mai-logo-google-plus-g"></span></a>
-                        <a href="#"><span class="mai-logo-instagram"></span></a>
-                        <a href="#"><span class="mai-logo-youtube"></span></a>
-                    </div>
-                </div>
-                <br>
-                <div class="col-lg-4 py-3">
-                    <h3>Anggota Kelompok 11</h3>
-                    <h5>Cenayang PBP</h5>
-                    <ul class="footer-menu">
-                        <li><a href="#">Hendinur Faizal - <span style="color: #35bb78">24060119130053</span></a></li>
-                        <li><a href="#">Imas Ayu Wardani - <span style="color: #35bb78">24060119120005</span></a></li>
-                        <li><a href="#">Muhammad Naufal Pratama - <span style="color: #35bb78">24060119130056</span></a></li>
-                        <li><a href="#">Safira Marsha - <span style="color: #35bb78">24060119140111</span></a></li>
-                        <li><a href="#">Adinda Rosman - <span style="color: #35bb78">24060119130085</span></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <p class="text-center" id="copyright">Copyright &copy; 2020. This template design and develop by <a
-                    href="https://macodeid.com/" target="_blank">MACode ID</a></p>
-        </div>
-    </footer>
+    @include('footer')
 
     <link rel="stylesheet" href="{{ URL::asset('js/jquery3.min.js') }}">
 

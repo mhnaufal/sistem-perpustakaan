@@ -18,11 +18,11 @@
                 <h3>Anggota Kelompok 11</h3>
                 <h5>🎭 Cenayang PBP</h5>
                 <ul class="footer-menu">
-                    <li><a href="#">Hendinur Faizal - <span style="color: #35bb78">24060119130053</span></a></li>
-                    <li><a href="#">Imas Ayu Wardani - <span style="color: #35bb78">24060119120005</span></a></li>
-                    <li><a href="#">Muhammad Naufal Pratama - <span style="color: #35bb78">24060119130056</span></a></li>
-                    <li><a href="#">Safira Marsha - <span style="color: #35bb78">24060119140111</span></a></li>
-                    <li><a href="#">Adinda Rosman - <span style="color: #35bb78">24060119130085</span></a></li>
+                    <li><a href="https://www.instagram.com/hendinurfaizal/" target="_blank" rel="noopener noreferrer">Hendinur Faizal - <span style="color: #35bb78">24060119130053</span></a></li>
+                    <li><a href="https://www.instagram.com/imasayuwrdn/" target="_blank" rel="noopener noreferrer">Imas Ayu Wardani - <span style="color: #35bb78">24060119120005</span></a></li>
+                    <li><a href="https://www.instagram.com/mprtmma/" target="_blank" rel="noopener noreferrer">Muhammad Naufal Pratama - <span style="color: #35bb78">24060119130056</span></a></li>
+                    <li><a href="https://www.instagram.com/safiramarsha/" target="_blank" rel="noopener noreferrer">Safira Marsha - <span style="color: #35bb78">24060119140111</span></a></li>
+                    <li><a href="https://www.instagram.com/adindarosman/" target="_blank" rel="noopener noreferrer">Adinda Rosman - <span style="color: #35bb78">24060119130085</span></a></li>
                 </ul>
             </div>
         </div>
