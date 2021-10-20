@@ -19,6 +19,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="{{ URL::asset('vendor/nucleo/css/nucleo.css') }}" type="text/css">
+
     <link rel="stylesheet" href="{{ URL::asset('css/maicons.css') }}">
 
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">
@@ -30,17 +35,36 @@
 
 </head>
 
-<body style="background-color: #006969">
+<body style="background-color: #6404ca">
 
     <br>
     <div class="container mt-5">
         <div class="container">
+            <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
+                <div class="container">
+                    <div class="header-body text-center mb-7">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+                                <h1 class="text-white">Selamat Datang!</h1>
+                                <p class="text-lead text-white">Masuk ke akun <span class="fw-bold">SiPerpus</span>
+                                    Anda untuk menggunakan berbagai fitur unggulan kami!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator separator-bottom separator-skew zindex-100">
+                    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+                    </svg>
+                </div>
+            </div>
+
             <div class="row justify-content-center">
                 <div class="col-md-7">
                     <div class="card" style="background-color: rgb(234, 246, 255)">
                         <div class="card-header">
                             <p class="fs-3 fw-bold">Login</p>
-                            <p class="fs-5 fst-italic">Sistem Perpustakaan</p>
                         </div>
                         <div class="card-body">
                             <form method="POST" autocomplete="on" action="{{ route('login') }}">
@@ -63,30 +87,45 @@
                                     </div>
                                 @endif
                                 <div class="form-group mb-3">
-                                    <label for="username">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" size="30"
-                                        required autofocus placeholder="Email">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Email" type="email" required
+                                            autofocus>
+                                    </div>
                                 </div>
-                                <div class="form-group mb-5">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" required
-                                        placeholder="Password">
+                                <div class="form-group">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Password" type="password" required>
+                                    </div>
                                 </div>
                                 <div class="d-flex mb-5 align-items-center">
-                                    <label class="control control--checkbox mb-0"><span class="caption">Remember
-                                            me</span>
-                                        <input type="checkbox" checked="checked" />
-                                    </label>
-                                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot
-                                            Password</a></span>
+                                    <div class="custom-control custom-control-alternative custom-checkbox">
+                                        <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
+                                        <label class="custom-control-label" for=" customCheckLogin">
+                                            <span class="text-muted">Remember me</span>
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btn-sm fw-bold" style="float: right"
-                                        name="submit" value="submit">Login</button>
+                                        name="submit" value="submit">Masuk</button>
                                     <a class="btn btn-secondary btn-sm mr-2" href="{{ route('homepage') }}"
                                         style="float: right">Kembali</a>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                            <a href="#" class="text-light fs-5"><small>Lupa password?</small></a>
+                        </div>
+                        <div class="col-6 text-right">
+                            <a href="#" class="text-light fs-5"><small>Daftar Akun Baru!</small></a>
                         </div>
                     </div>
                 </div>
