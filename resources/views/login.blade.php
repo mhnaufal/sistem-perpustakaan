@@ -83,6 +83,8 @@
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btn-sm fw-bold" style="float: right"
                                         name="submit" value="submit">Login</button>
+                                    <a class="btn btn-secondary btn-sm mr-2" href="{{ route('homepage') }}"
+                                        style="float: right">Kembali</a>
                                 </div>
                             </form>
                         </div>
