@@ -27,10 +27,10 @@ class AuthController extends Controller
         }
 
         if (Auth::guard('anggota')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('view.books');
+            return redirect()->route('dashboard');
         }
         elseif (Auth::guard('petugas')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('view.books');
+            return redirect()->route('dashboard');
         }
 
         return back()->withInput($request->only('email', 'remember'))->with('error', 'Anda belum terdaftar di SisPerpus!');

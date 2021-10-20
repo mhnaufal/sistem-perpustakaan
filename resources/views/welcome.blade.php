@@ -43,7 +43,7 @@
                 <div class="navbar-collapse collapse" id="navbarContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-primary ml-lg-2" href="{{ route('login') }}">Login</a>
