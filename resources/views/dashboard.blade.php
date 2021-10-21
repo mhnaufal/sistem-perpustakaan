@@ -42,7 +42,7 @@
     <!-- Page plugins -->
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/argon.css?v=1.2.0') }}" type="text/css">
-    
+
     <link rel="stylesheet" href="{{ URL::asset('css/maicons.css') }}">
 
     {{-- <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}"> --}}
@@ -59,7 +59,8 @@
             <!-- Brand -->
             <div class="sidenav-header  align-items-center">
                 <a class="navbar-brand" href="javascript:void(0)">
-                    <h3 class="fw-bold fs-3 text-decoration-underline" style="color: #6404ca">SiPerpus<span style="color: #f5365c">.</span></h3>
+                    <h3 class="fw-bold fs-3 text-decoration-underline" style="color: #6404ca">SiPerpus<span
+                            style="color: #f5365c">.</span></h3>
                 </a>
             </div>
             <div class="navbar-inner">
@@ -98,7 +99,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('view.returns') }}">
                                 <i class="ni ni-box-2 text-info"></i>
                                 <span class="nav-link-text">Pengembalian</span>
                             </a>
@@ -106,7 +107,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('homepage') }}">
                                 <i class="ni ni-shop text-primary"></i>
-                                <span class="nav-link-text">Home</span>
+                                <span class="nav-link-text">Beranda</span>
                             </a>
                         </li>
                     </ul>
@@ -145,8 +146,8 @@
                                 <form method="POST" autocomplete="on" action="{{ route('logout') }}">
                                     @csrf
                                     <button class="nav-link fs-5 fw-bold btn btn-success"><span
-                                        class="text-dark ">Selamat datang</span> <span
-                                        class="text-decoration-underline text-light">{{ $user }}❤️</span></button>
+                                            class="text-dark ">Selamat datang</span> <span
+                                            class="text-light">{{ $user }} 😀</span></button>
                                 </form>
                             </li>
                         </ul>
@@ -217,7 +218,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Buku Dipinjam</h5>
-                                            <span class="h2 font-weight-bold mb-0">924</span>
+                                            <span class="h2 font-weight-bold mb-0">{{ $totalPeminjaman }}</span>
                                         </div>
                                         <div class="col-auto">
                                             <div
@@ -241,7 +242,7 @@
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Buku Dikembalikan
                                             </h5>
-                                            <span class="h2 font-weight-bold mb-0">49,65%</span>
+                                            <span class="h2 font-weight-bold mb-0">{{ $totalPengembalian }}</span>
                                         </div>
                                         <div class="col-auto">
                                             <div
@@ -261,39 +262,81 @@
                 </div>
             </div>
         </div>
-        <!-- Footer -->
-        <br><br><br>
-        @include('footer')
-        <footer class="footer pt-0">
-            <div class="row align-items-center justify-content-lg-between">
-                <div class="col-lg-6">
-                    <div class="copyright text-center  text-lg-left  text-muted">
-                        &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1"
-                            target="_blank">Creative Tim</a>
+
+        <div class="row">
+            <div class="col-xl-10">
+                <div class="card">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Peminjaman Buku</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">🙍‍♂️ Peminjam</th>
+                                    <th scope="col">📘 Buku</th>
+                                    <th scope="col">📅 Tanggal Pinjam</th>
+                                    <th scope="col">📌 Tanggal Pengembalian</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if ($loansReturns->isNotEmpty())
+                                    @foreach ($loansReturns as $data)
+                                        <tr>
+                                            <td class="fw-bold">{{ $data->nama }}</td>
+                                            <td>{{ $data->judul }}</td>
+                                            <td>{{ $data->tgl_pinjam }}</td>
+                                            <td>@if ($data->tgl_kembali === null) <span class="fst-italic">-belum mengembalikan-</span> @else {{ $data->tgl_kembali }} @endif</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <div>
+                                        <p class="card-text">Belum ada peminjaman!</p>
+                                    </div>
+                                @endif
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative
-                                Tim</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com/presentation" class="nav-link"
-                                target="_blank">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md"
-                                class="nav-link" target="_blank">MIT License</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
-        </footer>
-    </div>
+
+            <!-- Footer -->
+            <br><br><br>
+            @include('footer')
+            <footer class="footer pt-0">
+                <div class="row align-items-center justify-content-lg-between">
+                    <div class="col-lg-6">
+                        <div class="copyright text-center  text-lg-left  text-muted">
+                            &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1"
+                                target="_blank">Creative Tim</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative
+                                    Tim</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/presentation" class="nav-link"
+                                    target="_blank">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md"
+                                    class="nav-link" target="_blank">MIT License</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
     <!-- Argon Scripts -->
     <!-- Core -->
