@@ -16,7 +16,7 @@ class AnggotaController extends Controller
             $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
             return view('daftarAnggota', compact('members', 'user'));
         } else {
-            return redirect('login')->with('error', 'Anda belum login!');
+            return redirect('login')->with('error', '❌ Anda belum login!');
         }
     }
 }

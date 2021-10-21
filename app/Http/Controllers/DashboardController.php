@@ -27,7 +27,7 @@ class DashboardController extends Controller
 
             return view('dashboard', compact('user', 'totalBuku', 'totalAnggota', 'totalPeminjaman', 'totalPengembalian', 'loansReturns'));
         } else {
-            return redirect('login')->with('error', 'Anda belum login!');
+            return redirect('login')->with('error', '❌ Anda belum login!');
         }
     }
 

@@ -63,9 +63,9 @@
                 @endif
                 <table class="table table-stripped">
                     <tr>
-                        <th>ID</th>
-                        <th>Kategori</th>
-                        <th>Aksi</th>
+                        <th>🔢 ID</th>
+                        <th>🚩 Kategori</th>
+                        <th>⭐ Aksi</th>
                     </tr>
                     @if ($categories->isNotEmpty())
                         @foreach ($categories as $category)

@@ -18,7 +18,7 @@ class BukuController extends Controller
             $user = Auth::guard('petugas')->user()->nama ?? Auth::guard('anggota')->user()->nama ?? 'Mawar';
             return view('daftarBuku', compact('bukus', 'user'));
         } else {
-            return redirect('login')->with('error', 'Anda belum login!');
+            return redirect('login')->with('error', '❌ Anda belum login!');
         }
     }
 
@@ -64,9 +64,9 @@ class BukuController extends Controller
 
         try {
             $book->save();
-            return redirect()->route('view.books')->with('success', 'Data buku berhasil ditambahkan!');
+            return redirect()->route('view.books')->with('success', '✔️ Data buku berhasil ditambahkan!');
         } catch (\Throwable $th) {
-            return redirect()->route('view.books')->with('error', 'Gagal menambahkan data buku!');
+            return redirect()->route('view.books')->with('error', '❌ Gagal menambahkan data buku!');
         }
     }
 
@@ -92,9 +92,9 @@ class BukuController extends Controller
 
         try {
             $book->update($request->all());
-            return redirect()->route('view.books')->with('success', 'Data buku berhasil diperbarui!');
+            return redirect()->route('view.books')->with('success', '✔️ Data buku berhasil diperbarui!');
         } catch (\Throwable $th) {
-            return redirect()->route('view.books')->with('error', 'Gagal memperbarui data buku!');
+            return redirect()->route('view.books')->with('error', '❌ Gagal memperbarui data buku!');
         }
     }
 
@@ -119,9 +119,9 @@ class BukuController extends Controller
 
         try {
             $book->delete();
-            return redirect()->route('view.books')->with('success', 'Data buku berhasil dihapus!');
+            return redirect()->route('view.books')->with('success', '✔️ Data buku berhasil dihapus!');
         } catch (\Throwable $th) {
-            return redirect()->route('view.books')->with('error', 'Gagal menghapus data buku!');
+            return redirect()->route('view.books')->with('error', '❌ Gagal menghapus data buku!');
         }
     }
 }

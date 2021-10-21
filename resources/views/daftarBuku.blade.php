@@ -63,18 +63,18 @@
                 @endif
                 <table class="table table-stripped">
                     <tr>
-                        <th>ID</th>
-                        <th>ISBN</th>
-                        <th>Judul</th>
-                        <th>Kategori</th>
-                        <th>Pengarang</th>
-                        <th>Penerbit</th>
-                        <th>Kota</th>
-                        <th>Editor</th>
+                        <th>🔢 ID</th>
+                        <th>🔑 <p>ISBN</p></th>
+                        <th>📗 <p>Judul</p></th>
+                        <th>🚩 Kategori</th>
+                        <th>✏ Pengarang</th>
+                        <th>🏢 <p>Penerbit</p></th>
+                        <th>🌃 <p>Kota</p></th>
+                        <th>🖊 <p>Editor</p></th>
                         {{-- <th>Gambar</th> --}}
-                        <th>Jumlah</th>
-                        <th>Stok</th>
-                        <th>Aksi</th>
+                        {{-- <th>📓 Jumlah</th> --}}
+                        <th>📚 Stok</th>
+                        <th>⭐ <p>Aksi</p></th>
                     </tr>
                     @if ($bukus->isNotEmpty())
                         @foreach ($bukus as $buku)
@@ -88,7 +88,7 @@
                                 <td>{{ $buku->kota_penerbit }}</td>
                                 <td>{{ $buku->editor }}</td>
                                 {{-- <td>{{ $buku->file_gambar }}</td> --}}
-                                <td>{{ $buku->stok }}</td>
+                                {{-- <td>{{ $buku->stok }}</td> --}}
                                 <td>{{ $buku->stok_tersedia }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-info my-1" style="color: #F6F5FC"

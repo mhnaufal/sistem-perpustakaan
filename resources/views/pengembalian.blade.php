@@ -64,7 +64,7 @@
                     @endif
                     <table class="table table-stripped">
                         <tr>
-                            <th>🔒 ISBN</th>
+                            <th>🔑 ISBN</th>
                             <th>📗 Judul</th>
                             <th>📅 Tanggal<p>Peminjaman</p>
                             </th>

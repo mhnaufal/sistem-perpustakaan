@@ -63,11 +63,11 @@
                 @endif
                 <table class="table table-stripped">
                     <tr>
-                        <th>NIM</th>
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>Email</th>
-                        <th>No. Telepon</th>
+                        <th>🔢 NIM</th>
+                        <th>📛 Nama</th>
+                        <th>📌 Alamat</th>
+                        <th>📧 Email</th>
+                        <th>📞 No. Telepon</th>
                     </tr>
                     @if ($members->isNotEmpty())
                         @foreach ($members as $member)

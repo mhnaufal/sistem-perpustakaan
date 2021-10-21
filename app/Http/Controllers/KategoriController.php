@@ -17,7 +17,7 @@ class KategoriController extends Controller
             $user = Auth::guard('petugas')->user()->nama ?? Auth::guard('anggota')->user()->nama ?? 'Mawar';
             return view('daftarKategori', compact('categories', 'user'));
         } else {
-            return redirect('login')->with('error', 'Anda belum login!');
+            return redirect('login')->with('error', '❌ Anda belum login!');
         }
     }
 
@@ -44,9 +44,9 @@ class KategoriController extends Controller
 
         try {
             $category->save();
-            return redirect()->route('view.categories')->with('success', 'Kategori berhasil ditambahkan!');
+            return redirect()->route('view.categories')->with('success', '✔️ Kategori berhasil ditambahkan!');
         } catch (\Throwable $th) {
-            return redirect()->route('view.categories')->with('error', 'Gagal menambahkan kategori!');
+            return redirect()->route('view.categories')->with('error', '❌ Gagal menambahkan kategori!');
         }
     }
 
@@ -71,9 +71,9 @@ class KategoriController extends Controller
 
         try {
             $category->update(['nama' => $request->kategori]);
-            return redirect()->route('view.categories')->with('success', 'Kategori berhasil diperbarui!');
+            return redirect()->route('view.categories')->with('success', '✔️ Kategori berhasil diperbarui!');
         } catch (\Throwable $th) {
-            return redirect()->route('view.categories')->with('error', 'Gagal memperbarui kategori!');
+            return redirect()->route('view.categories')->with('error', '❌ Gagal memperbarui kategori!');
         }
     }
 
@@ -99,9 +99,9 @@ class KategoriController extends Controller
 
         try {
             $category->delete();
-            return redirect()->route('view.categories')->with('success', 'Kategori berhasil dihapus!');
+            return redirect()->route('view.categories')->with('success', '✔️ Kategori berhasil dihapus!');
         } catch (\Throwable $th) {
-            return redirect()->route('view.categories')->with('error', 'Gagal menghapus kategori!');
+            return redirect()->route('view.categories')->with('error', '❌ Gagal menghapus kategori!');
         }
     }
 }

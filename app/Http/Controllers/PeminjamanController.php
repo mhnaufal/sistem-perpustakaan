@@ -30,19 +30,19 @@ class PeminjamanController extends Controller
         $findBook = Buku::where('judul', $request->buku)->first();
 
         if ($findBook->stok_tersedia <= 0) {
-            return redirect()->route('view.loans')->with('error', "Stok buku {$request->buku} sedang kosong, silakan pinjam buku yang lain!");
+            return redirect()->route('view.loans')->with('error', "❌ Stok buku {$request->buku} sedang kosong, silakan pinjam buku yang lain!");
         }
         
         $findAnggota = Anggota::where('nim', $request->nim)->first();
 
         if (!$findAnggota) {
-            return redirect()->route('view.loans')->with('error', "Tidak ada anggota dengan nim tersebut!");
+            return redirect()->route('view.loans')->with('error', "❌ Tidak ada anggota dengan nim tersebut!");
         }
 
         $countLoans = DB::table('peminjamans')->join('detail_transaksis', 'peminjamans.idtransaksi', '=', 'detail_transaksis.idtransaksi')->where('tgl_kembali', null)->where('nim', $request->nim)->count();
         
         if ($countLoans >= 2) {
-            return redirect()->route('view.loans')->with('error', "Anggota tersebut belum mengembalikan buku, maka tidak bisa meminjam buku lagi!");
+            return redirect()->route('view.loans')->with('error', "❌ Anggota tersebut belum mengembalikan buku, maka tidak bisa meminjam buku lagi!");
         }
 
         $peminjaman = new Peminjaman();
@@ -54,7 +54,7 @@ class PeminjamanController extends Controller
         try {
             $peminjaman->save();
         } catch(\Throwable $th) {
-            return redirect()->route('view.loans')->with('error', 'Gagal meminjam buku!');
+            return redirect()->route('view.loans')->with('error', '❌ Gagal meminjam buku!');
         }
 
         $detailTransaksi = new DetailTransaksi();
@@ -65,10 +65,10 @@ class PeminjamanController extends Controller
 
         try {
             $detailTransaksi->save();
-            return redirect()->route('view.loans')->with('success', 'Berhasil meminjam buku!');
+            return redirect()->route('view.loans')->with('success', '✔️ Berhasil meminjam buku, selamat membaca!');
         } catch(\Throwable $th) {
             $detailTransaksi->delete();
-            return redirect()->route('view.loans')->with('error', 'Gagal meminjam buku!');
+            return redirect()->route('view.loans')->with('error', '❌ Gagal meminjam buku!');
         }
     }
 }
