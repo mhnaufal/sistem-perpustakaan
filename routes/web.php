@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PeminjamanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +33,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 /* Dashboard */
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-/* Petugas */
+/* Peminjaman */
+Route::get('/loans', [PeminjamanController::class, 'showLoans'])->name('view.loans');
+Route::post('/loans', [PeminjamanController::class, 'createLoan'])->name('add.loan');
+
 
 /* Anggota */
 Route::get('/members', [AnggotaController::class, 'showAllmembers'])->name('view.members');
