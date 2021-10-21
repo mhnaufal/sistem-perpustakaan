@@ -290,7 +290,7 @@
                                             <td class="fw-bold">{{ $data->nama }}</td>
                                             <td>{{ $data->judul }}</td>
                                             <td>{{ $data->tgl_pinjam }}</td>
-                                            <td>@if ($data->tgl_kembali === null) <span class="fst-italic">-belum mengembalikan-</span> @else {{ $data->tgl_kembali }} @endif</td>
+                                            <td>@if ($data->tgl_kembali === null) <span class="fst-italic">-belum mengembalikan buku-</span> @else {{ $data->tgl_kembali }} @endif</td>
                                         </tr>
                                     @endforeach
                                 @else

@@ -21,7 +21,7 @@ class PeminjamanController extends Controller
             $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
             return view('peminjaman', compact('user', 'bukus'));
         } else {
-            return redirect('login')->with('error', '👮 Hubungi petugas untuk melakukan peminjaman buku!');
+            return redirect('dashboard')->with('error', '👮 Hubungi petugas untuk melakukan peminjaman buku!');
         }
     }
 
