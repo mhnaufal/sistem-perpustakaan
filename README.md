@@ -66,7 +66,7 @@ php artisan migrate
 php artisan serve
 ```
 
-## Cara ngedit
+## Cara kalau mau ngedit2
 
 #### 1. Bikin branch sendiri
 ```console
