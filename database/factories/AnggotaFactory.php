@@ -28,7 +28,7 @@ class AnggotaFactory extends Factory
             'password' => Hash::make('12341234'),
             'alamat' => $this->faker->address(),
             'kota' => $this->faker->city(),
-            'email' => $this->faker->unique()->email(),
+            'email' => $this->faker->unique()->safeEmail(),
             'no_telp' => '08'.$this->faker->unique()->randomNumber(9),
         ];
     }

@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\Petugas::factory(1)->create();
-        \App\Models\Anggota::factory(3)->create();
+        \App\Models\Anggota::factory(15)->create();
 
         $petugas = new Petugas([
             'nama' => 'Suhell',
@@ -41,6 +41,6 @@ class DatabaseSeeder extends Seeder
         ]);
         $cerpen->save();
         
-        \App\Models\Buku::factory(10)->create();
+        \App\Models\Buku::factory(31)->create();
     }
 }
