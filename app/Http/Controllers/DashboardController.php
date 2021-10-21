@@ -9,8 +9,12 @@ class DashboardController extends Controller
 {
     public function dashboard(Request $request)
     {
-        $user = Auth::guard('petugas')->user()->nama ?? Auth::guard('anggota')->user()->nama ?? 'Mawar';
+        if (Auth::guard('petugas')->check()) {
+            $user = Auth::guard('petugas')->user()->nama ?? Auth::guard('anggota')->user()->nama ?? 'Mawar';
+            return view('dashboard', compact('user'));
+        } else {
+            return redirect('login')->with('error', 'Anda belum login!');
+        }
         
-        return view('dashboard', compact('user'));
     }
 }
