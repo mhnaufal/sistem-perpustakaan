@@ -15,7 +15,7 @@
                             @csrf
                             <button class="nav-link fs-5 fw-bold btn btn-primary"><span
                                 class="text-dark ">Selamat datang</span> <span
-                                class="text-decoration-underline text-light">{{ $user }}❤️</span></button>
+                                class="text-light">{{ $user }} 😀</span></button>
                         </form>
                     </li>
                 </ul>
