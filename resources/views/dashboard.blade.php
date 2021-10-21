@@ -279,7 +279,7 @@
         </div>
 
         <div class="row">
-            <div class="col-xl-10">
+            <div class="col-xl-13">
                 <div class="card">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
@@ -292,20 +292,24 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
+                                    <th scope="col"> No.</th>
                                     <th scope="col">🙍‍♂️ Peminjam</th>
                                     <th scope="col">📘 Buku</th>
                                     <th scope="col">📅 Tanggal Pinjam</th>
                                     <th scope="col">📌 Tanggal Pengembalian</th>
+                                    <th scope="col">💲 Denda</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if ($loansReturns->isNotEmpty())
-                                    @foreach ($loansReturns as $data)
+                                    @foreach ($loansReturns as $book)
                                         <tr>
-                                            <td class="fw-bold">{{ $data->nama }}</td>
-                                            <td>{{ $data->judul }}</td>
-                                            <td>{{ $data->tgl_pinjam }}</td>
-                                            <td>@if ($data->tgl_kembali === null) <span class="fst-italic">-belum mengembalikan buku-</span> @else {{ $data->tgl_kembali }} @endif</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td class="fw-bold">{{ $book->nama }}</td>
+                                            <td>{{ $book->judul }}</td>
+                                            <td>{{ $book->tgl_pinjam }}</td>
+                                            <td>@if ($book->tgl_kembali === null) <span class="fst-italic">-belum mengembalikan buku-</span> @else {{ $book->tgl_kembali }} @endif</td>
+                                            <td>{{ $book->denda }}</td>
                                         </tr>
                                     @endforeach
                                 @else

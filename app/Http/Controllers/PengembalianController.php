@@ -13,8 +13,14 @@ class PengembalianController extends Controller
 {
     public function showReturns(Request $request)
     {
-        if (Auth::guard('anggota')->check()) {
-            $currentAnggota = Auth::guard('petugas')->user();
+        if (Auth::guard('petugas')->check()) {
+            $loanedBooks = DB::table('peminjamans')->join('detail_transaksis', 'peminjamans.idtransaksi', '=', 'detail_transaksis.idtransaksi')->join('anggotas', 'peminjamans.nim', '=', 'anggotas.nim')->join('bukus', 'detail_transaksis.idbuku', '=', 'bukus.idbuku')->get();
+
+            $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
+
+            return view('pengembalian', compact('loanedBooks', 'user'));
+        } elseif (Auth::guard('anggota')->check()) {
+            $currentAnggota = Auth::guard('anggota')->user();
 
             $loanedBooks = DB::table('peminjamans')->join('detail_transaksis', 'peminjamans.idtransaksi', '=', 'detail_transaksis.idtransaksi')->join('anggotas', 'peminjamans.nim', '=', 'anggotas.nim')->join('bukus', 'detail_transaksis.idbuku', '=', 'bukus.idbuku')->where('peminjamans.nim', $currentAnggota->nim)->get();
 
@@ -22,12 +28,16 @@ class PengembalianController extends Controller
 
             return view('pengembalian', compact('loanedBooks', 'user'));
         } else {
-            return redirect('dashboard')->with('error', '🙍‍♀️ Hanya anggota yang bisa mengakses!');
+            return redirect('dashboard')->with('error', '❌ Tidak diperbolehkan mengakses halaman ini!');
         }
     }
 
     public function createReturn(Request $request)
     {
+        if (!Auth::guard('anggota')->check()) {
+            return redirect()->route('view.returns')->with('error', '🙍‍♀️ Hanya anggota yang bisa melakukan pengembalian buku!');
+        }
+
         $currentAnggota = Auth::guard('anggota')->user();
 
         $loanedBooks = Peminjaman::join('detail_transaksis', 'peminjamans.idtransaksi', '=', 'detail_transaksis.idtransaksi')->join('anggotas', 'peminjamans.nim', '=', 'anggotas.nim')->join('bukus', 'detail_transaksis.idbuku', '=', 'bukus.idbuku')->where('peminjamans.nim', $currentAnggota->nim)->where('detail_transaksis.idtransaksi', $request->idtransaksi)->first();
@@ -51,9 +61,9 @@ class PengembalianController extends Controller
         try {
             DetailTransaksi::where('idtransaksi', $request->idtransaksi)->update(array('denda' => $denda, 'tgl_kembali' => $tgl_kembali));
             $findPeminjaman->update();
-            return redirect()->route('view.returns')->with('success', 'Berhasil mengembalikan buku!');
+            return redirect()->route('view.returns')->with('success', '✔️ Berhasil mengembalikan buku!');
         } catch (\Throwable $th) {
-            return redirect()->route('view.returns')->with('error', 'Gagal mengembalikan buku!');
+            return redirect()->route('view.returns')->with('error', '❌ Gagal mengembalikan buku!');
         }
     }
 }
