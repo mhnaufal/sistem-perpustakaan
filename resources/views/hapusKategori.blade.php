@@ -71,9 +71,9 @@
                         <tr>
                             <td>{{ $category->idkategori }}</td>
                             <td>{{ $category->nama }}</td>
-
                         </tr>
-                        <p>Yakin ingin menghapus kategori <span class="fw-bold fs-5">{{ $category->nama }}</span>?</p>
+                        <p>Yakin ingin menghapus kategori <span class="fw-bold fs-5">{{ $category->nama }}</span>?
+                        </p>
                         <a class="btn btn-secondary ms-2 m-1" href="{{ route('view.categories') }}"
                             style="float: right">Kembali</a>
                         <button type="submit" class="btn btn-danger m-1" style="float: right">Hapus</button>

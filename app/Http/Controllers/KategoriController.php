@@ -21,6 +21,7 @@ class KategoriController extends Controller
         }
     }
 
+    /* Menampilkan halaman tambah kategori */
     public function viewCreateCategory(Request $request)
     {
         if (Auth::guard('petugas')->check()) {
@@ -29,10 +30,11 @@ class KategoriController extends Controller
 
             return view('tambahKategori', compact('categories', 'user'));
         } else {
-            return back()->with('error', '👮 Hanya petugas yang bisa menambah buku!');
+            return back()->with('error', '👮 Hanya petugas yang bisa menambah kategori!');
         }
     }
 
+    /* Proses membuat kategori baru */
     public function createCategory(Request $request)
     {
         $nama = $request->kategori;
@@ -48,6 +50,7 @@ class KategoriController extends Controller
         }
     }
 
+    /* Menampilkan halaman edit kategori */
     public function viewEditCategory(Request $request, $id)
     {
         if (Auth::guard('petugas')->check()) {
@@ -56,12 +59,12 @@ class KategoriController extends Controller
 
             return view('editKategori', compact('category', 'user'));
         } else {
-            return back()->with('error', '👮 Hanya petugas yang bisa mengedit buku!');
+            return back()->with('error', '👮 Hanya petugas yang bisa mengedit kategori!');
         }
 
     }
 
-    /* Proses pengeditan buku */
+    /* Proses pengeditan kategori */
     public function editCategory(Request $request, $id)
     {
         $category = Kategori::where('idkategori', $id);
@@ -85,11 +88,11 @@ class KategoriController extends Controller
 
             return view('hapusKategori', compact('category', 'user'));
         } else {
-            return back()->with('error', '👮 Hanya petugas yang bisa menghapus buku!');
+            return back()->with('error', '👮 Hanya petugas yang bisa menghapus kategori!');
         }
     }
 
-    /* Proses menghapus buku */
+    /* Proses menghapus kategori */
     public function deleteCategory(Request $request, $id)
     {
         $category = Kategori::find($id);

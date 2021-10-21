@@ -63,26 +63,25 @@
                     <tr>
                         <th>ID</th>
                         <th>Kategori</th>
-
                         <th>Aksi</th>
                     </tr>
                     @if ($categories->isNotEmpty())
-                        @foreach ($categories as $buku)
+                        @foreach ($categories as $category)
                             <tr>
-                                <td>{{ $buku->idkategori }}</td>
-                                <td>{{ $buku->nama }}</td>
+                                <td>{{ $category->idkategori }}</td>
+                                <td>{{ $category->nama }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-info my-1" style="color: #F6F5FC"
-                                        href="edit-category/{{ $buku->idkategori }}">🔧Edit</a>
+                                        href="edit-category/{{ $category->idkategori }}">🔧Edit</a>
                                     <a class="btn btn-danger btn-sm" style="color: #F6F5FC"
-                                        href="delete-category/{{ $buku->idkategori }}">🗑️Hapus</a>
+                                        href="delete-category/{{ $category->idkategori }}">🗑️Hapus</a>
                                 </td>
 
                             </tr>
                         @endforeach
                     @else
                         <div>
-                            <p class="card-text">Buku saat ini sedang kosong!</p>
+                            <p class="card-text">Kategori kosong!</p>
                         </div>
                     @endif
                 </table>

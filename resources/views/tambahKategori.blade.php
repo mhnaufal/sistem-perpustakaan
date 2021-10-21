@@ -66,7 +66,7 @@
                             <label for="kategori" class="col-sm-2 col-form-label">Kategori : </label>
                             <div class="col-sm-10">
                                 <input type="text" name="kategori" id="kategori" class="form-control"
-                                    placeholder="Masukkan kategori" required /><br>
+                                    placeholder="Masukkan nama kategori" required /><br>
                             </div>
                         </div>
 
