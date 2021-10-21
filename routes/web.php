@@ -6,6 +6,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PengembalianController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,9 @@ Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashb
 Route::get('/loans', [PeminjamanController::class, 'showLoans'])->name('view.loans');
 Route::post('/loans', [PeminjamanController::class, 'createLoan'])->name('add.loan');
 
+/* Pengembalian */
+Route::get('/returns', [PengembalianController::class, 'showReturns'])->name('view.returns');
+Route::post('/returns', [PengembalianController::class, 'createReturn'])->name('add.return');
 
 /* Anggota */
 Route::get('/members', [AnggotaController::class, 'showAllmembers'])->name('view.members');
