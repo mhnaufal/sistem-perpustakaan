@@ -39,7 +39,7 @@
     @include('header')
 
     <div class="container mt-5">
-        <a class="btn btn-success mb-2" href="{{ route('homepage') }}">🏠 Home</a>
+        <a class="btn btn-success mb-2" href="{{ route('homepage') }}">🏠 Beranda</a>
         <a class="btn btn-success mb-2" href="{{ route('dashboard') }}">💠 Dashboard</a>
         <div class="card">
             <div class="card-header fw-bold fs-4">Daftar Buku</div>
