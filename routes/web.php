@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\DashboardController;
@@ -34,9 +35,10 @@ Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashb
 /* Petugas */
 
 /* Anggota */
-Route::get('/members', function () {
-    return view('daftarAnggota');
-})->name('view.members');
+Route::get('/members', [AnggotaController::class, 'showAllmembers'])->name('view.members');
+
+Route::get('/add-member', [AnggotaController::class, 'viewCreateMember'])->name('view.add.member');
+Route::post('/members', [AnggotaController::class, 'createMember'])->name('add.member');
 
 /* Buku */
 Route::get('/books', [BukuController::class, 'showAllBooks'])->name('view.books');
