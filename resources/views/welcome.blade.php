@@ -73,7 +73,7 @@
         </div>
     </header>
 
-    <div class="page-section" id="about">
+    <div class="page-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -82,9 +82,9 @@
                             <img src="{{ URL::asset('img/services/service-1.svg') }}" alt="">
                         </div>
                         <div class="body">
-                            <h5 class="text-secondary">Daftar Jadi Anggota!</h5>
+                            <h5 class="text-secondary fw-bold">Daftar Jadi Anggota!</h5>
                             <p>Jadilah anggota perpustakaan dan dapatkan jutaan manfaat dari buku di seluruh dunia!</p>
-                            <a href="#" class="btn btn-primary">Baca Lebih Lanjut!</a>
+                            <a href="{{ route('dashboard') }}" class="btn btn-primary">Baca Lebih Lanjut!</a>
                         </div>
                     </div>
                 </div>
@@ -94,8 +94,8 @@
                             <img src="{{ URL::asset('img/services/service-2.svg') }}" alt="">
                         </div>
                         <div class="body">
-                            <h5 class="text-secondary">Cari Buku!</h5>
-                            <p>Temukan buku-buku yang kamu cari hingga buku langka sekalipun, ada DI SINI!</p>
+                            <h5 class="text-secondary fw-bold">Cari Buku!</h5>
+                            <p>Temukan buku-buku yang kamu cari hingga buku langka sekalipun, semuanya ada DI SINI!</p>
                             <a href="{{ route('view.books') }}" class="btn btn-primary">Baca Lebih Lanjut!</a>
                         </div>
                     </div>
@@ -106,9 +106,9 @@
                             <img src="{{ URL::asset('img/services/service-3.svg') }}" alt="">
                         </div>
                         <div class="body">
-                            <h5 class="text-secondary">Pinjam Buku!</h5>
+                            <h5 class="text-secondary fw-bold">Pinjam Buku!</h5>
                             <p>Pinjam buku yang kamu inginkan tanpa perlu fotocopy KTP, tinggal sekali klik buku yang kamu sudah ada di genggamanmu!</p>
-                            <a href="#" class="btn btn-primary">Baca Lebih Lanjut!</a>
+                            <a href="{{ route('view.loans') }}" class="btn btn-primary">Baca Lebih Lanjut!</a>
                         </div>
                     </div>
                 </div>

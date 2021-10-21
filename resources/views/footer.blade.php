@@ -1,16 +1,16 @@
-<footer class="page-footer mt-5 bg-image" style="background-image: url({{ URL::asset('img/world_pattern.svg') }});">
+<footer class="page-footer mt-5 bg-image" id="about" style="background-image: url({{ URL::asset('img/world_pattern.svg') }});">
     <div class="container">
         <div class="row mb-5">
             <div class="col-lg-5 py-3">
-                <h3 class="text-decoration-underline">SiPerpus</h3>
+                <h3 class="text-decoration-underline" style="color: #9484ff">SiPerpus<span style="color: red">.</span></h3>
                 <p>Tugas Pengembangan Berbasis Platform A</p>
 
                 <div class="social-media-button">
-                    <a href="#"><span class="mai-logo-facebook-f"></span></a>
-                    <a href="#"><span class="mai-logo-twitter"></span></a>
-                    <a href="#"><span class="mai-logo-google-plus-g"></span></a>
-                    <a href="#"><span class="mai-logo-instagram"></span></a>
-                    <a href="#"><span class="mai-logo-youtube"></span></a>
+                    <a href="https://www.instagram.com/hendinurfaizal/" target="_blank" rel="noopener noreferrer"><span class="mai-logo-facebook-f"></span></a>
+                    <a href="https://www.instagram.com/imasayuwrdn/" target="_blank" rel="noopener noreferrer"><span class="mai-logo-twitter"></span></a>
+                    <a href="https://www.instagram.com/mprtmma/" target="_blank" rel="noopener noreferrer"><span class="mai-logo-google-plus-g"></span></a>
+                    <a href="https://www.instagram.com/safiramarsha/" target="_blank" rel="noopener noreferrer"><span class="mai-logo-instagram"></span></a>
+                    <a href="https://www.instagram.com/adindarosman/" target="_blank" rel="noopener noreferrer"><span class="mai-logo-youtube"></span></a>
                 </div>
             </div>
             <br>
