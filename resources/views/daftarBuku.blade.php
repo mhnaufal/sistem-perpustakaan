@@ -82,7 +82,7 @@
                                 <td>{{ $buku->idbuku }}</td>
                                 <td>{{ $buku->isbn }}</td>
                                 <td>{{ $buku->judul }}</td>
-                                <td>@if ($buku->idkategori == 1) Novel @elseif ($buku->idkategori == 1) Fiksi @else Cerpen @endif</td>
+                                <td>@if ($buku->idkategori === 1) Novel @elseif ($buku->idkategori === 2) Fiksi @elseif ($buku->idkategori === 3) Cerpen @else Lainnya @endif</td>
                                 <td>{{ $buku->pengarang }}</td>
                                 <td>{{ $buku->penerbit }}</td>
                                 <td>{{ $buku->kota_penerbit }}</td>
