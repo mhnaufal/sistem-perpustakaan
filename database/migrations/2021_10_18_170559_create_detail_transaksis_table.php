@@ -21,6 +21,7 @@ class CreateDetailTransaksisTable extends Migration
             $table->integer('denda');
             $table->timestamps();
             $table->foreign('idbuku')->references('idbuku')->on('bukus')->onDelete('CASCADE');
+            $table->foreign('idtransaksi')->references('idtransaksi')->on('peminjamans')->onDelete('CASCADE');
         });
     }
 
