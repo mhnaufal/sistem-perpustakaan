@@ -17,11 +17,11 @@ class PeminjamanController extends Controller
     {
         $bukus = Buku::get();
 
-        if (Auth::guard('anggota')->check() || Auth::guard('petugas')->check()) {
-            $user = Auth::guard('petugas')->user()->nama ?? Auth::guard('anggota')->user()->nama ?? 'Mawar';
+        if (Auth::guard('petugas')->check()) {
+            $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
             return view('peminjaman', compact('user', 'bukus'));
         } else {
-            return redirect('login')->with('error', 'Anda belum login!');
+            return redirect('login')->with('error', '👮 Hubungi petugas untuk melakukan peminjaman buku!');
         }
     }
 
