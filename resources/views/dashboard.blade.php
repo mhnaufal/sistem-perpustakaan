@@ -92,7 +92,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('view.loans') }}">
                                 <i class="ni ni-money-coins text-info"></i>
                                 <span class="nav-link-text">Peminjaman</span>
                             </a>
