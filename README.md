@@ -95,7 +95,7 @@ git push origin nama-branch
 ```
 
 ## Credits
-Thanks to these beautiful templates obtained from:
+Thanks to these beautiful templates:
 
 - [Argon](https://www.creative-tim.com/product/argon-dashboard/?partner=49926)
 - [SEOgram](https://www.free-css.com/free-css-templates/page271/seogram)
