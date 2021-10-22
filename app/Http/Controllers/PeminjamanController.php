@@ -15,11 +15,12 @@ class PeminjamanController extends Controller
 {
     public function showLoans(Request $request)
     {
-        $bukus = Buku::get();
+        $books = Buku::get();
+        $members = Anggota::get();
 
         if (Auth::guard('petugas')->check()) {
             $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
-            return view('peminjaman', compact('user', 'bukus'));
+            return view('peminjaman', compact('user', 'books', 'members'));
         } else {
             return redirect('dashboard')->with('error', '👮 Hubungi petugas untuk melakukan peminjaman buku!');
         }

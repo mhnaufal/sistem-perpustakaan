@@ -69,15 +69,18 @@
                         <div class="form-group row">
                             <label for="nim" class="col-sm-2 col-form-label">NIM anggota : </label>
                             <div class="col-sm-10">
-                                <input type="text" name="nim" id="nim" class="form-control"
-                                    placeholder="Masukkan NIM anggota" required /><br>
+                                <select style="color: #707070" name="nim" class="form-control">
+                                    @foreach ($members as $member)
+                                        <option value="{{ $member->nim }}">{{ $member->nim }}</option>
+                                    @endforeach
+                                </select><br>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="password" class="col-sm-2 col-form-label">Buku : </label>
                             <div class="col-sm-10">
                                 <select style="color: #707070" name="buku" class="form-control">
-                                    @foreach ($bukus as $buku)
+                                    @foreach ($books as $buku)
                                         <option value="{{ $buku->judul }}">{{ $buku->judul }}</option>
                                     @endforeach
                                 </select><br>
