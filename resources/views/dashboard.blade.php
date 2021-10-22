@@ -312,10 +312,6 @@
                                             <td>{{ $book->denda }}</td>
                                         </tr>
                                     @endforeach
-                                @else
-                                    <div>
-                                        <p class="card-text">Belum ada peminjaman!</p>
-                                    </div>
                                 @endif
                             </tbody>
                         </table>

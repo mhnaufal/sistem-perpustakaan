@@ -88,10 +88,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-                        @else
-                            <div>
-                                <p class="card-text">Anda belum meminjam buku apapun!</p>
-                            </div>
                         @endif
                     </table>
                 </form>
