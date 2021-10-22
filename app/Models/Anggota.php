@@ -18,6 +18,7 @@ class Anggota extends Authenticatable
     public $timestamps = false;
 
     protected $fillable = [
+        'nim',
         'nama',
         'password',
         'alamat',
