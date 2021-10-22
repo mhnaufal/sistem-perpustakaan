@@ -19,7 +19,7 @@ class AnggotaController extends Controller
             $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
             return view('daftarAnggota', compact('members', 'user'));
         } else {
-            return redirect('login')->with('error', '❌ Anda belum login!');
+            return redirect('dashboard')->with('error', '👮 Hanya petugas yang bisa mengakses menu anggota!');
         }
     }
 
@@ -59,6 +59,11 @@ class AnggotaController extends Controller
         if ($isEmailAvailable) {
             return redirect()->route('view.add.member')->with('error', '❌ Email tersebut telah terdaftar sebagai anggota!');
         }
+        
+        $isPhoneAvailable = Anggota::where('no_telp', $request->no_telp)->first();
+        if ($isPhoneAvailable) {
+            return redirect()->route('view.add.member')->with('error', '❌ Nomor hp tersebut telah terdaftar sebagai anggota!');
+        }
 
         $nim = $request->nim;
         $nama = $request->nama;
@@ -81,6 +86,7 @@ class AnggotaController extends Controller
             $member->save();
             return redirect()->route('view.members')->with('success', '✔️ Data anggota berhasil ditambahkan!');
         } catch (\Throwable $th) {
+            dd($th);
             return redirect()->route('view.add.member')->with('error', '❌ Gagal menambahkan data anggota!');
         }
     }
