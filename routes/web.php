@@ -60,6 +60,8 @@ Route::post('/edit-book/{id}', [BukuController::class, 'editBook'])->name('edit.
 Route::get('/delete-book/{id}', [BukuController::class, 'viewDeleteBook'])->name('view.delete.book');
 Route::post('/delete-book/{id}', [BukuController::class, 'deleteBook'])->name('delete.book');
 
+Route::get('/search', [BukuController::class, 'searchBooks'])->name('search.books');
+
 /* Kategori */
 Route::get('/categories', [KategoriController::class, 'showAllCategories'])->name('view.categories');
 

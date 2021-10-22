@@ -13,11 +13,11 @@ class BukuController extends Controller
     /* Menampilkan semua daftar buku yang ada */
     public function showAllBooks(Request $request)
     {
-        $bukus = Buku::get();
-        
+        $books = Buku::get();
+
         if (Auth::guard('anggota')->check() || Auth::guard('petugas')->check()) {
             $user = Auth::guard('petugas')->user()->nama ?? Auth::guard('anggota')->user()->nama ?? 'Mawar';
-            return view('daftarBuku', compact('bukus', 'user'));
+            return view('daftarBuku', compact('books', 'user'));
         } else {
             return redirect('login')->with('error', '❌ Anda belum login!');
         }
@@ -43,7 +43,7 @@ class BukuController extends Controller
             'isbn' => 'required | min:13',
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()->with('error', 'Pastikan mengisi data buku dengan benar!');
         }
 
@@ -92,7 +92,6 @@ class BukuController extends Controller
         } else {
             return back()->with('error', '👮 Hanya petugas yang bisa mengedit buku!');
         }
-
     }
 
     /* Proses pengeditan buku */
@@ -133,5 +132,16 @@ class BukuController extends Controller
         } catch (\Throwable $th) {
             return redirect()->route('view.books')->with('error', '❌ Gagal menghapus data buku!');
         }
+    }
+
+    public function searchBooks(Request $request)
+    {
+        $search = $request->cari;
+
+        $books = Buku::where('judul', 'LIKE', "%{$search}%")->get();
+
+        $user = Auth::guard('petugas')->user()->nama ?? Auth::guard('anggota')->user()->nama ?? 'Mawar';
+        
+        return view('daftarBuku', compact('books', 'user'));
     }
 }

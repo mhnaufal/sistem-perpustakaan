@@ -20,6 +20,8 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
     <link rel="icon" href="{{ URL::asset('img/brand/favicon.png') }}" type="image/png">
+    
+    <link rel="stylesheet" href="{{ URL::asset('vendor/nucleo/css/nucleo.css') }}" type="text/css">
 
     <link rel="stylesheet" href="{{ URL::asset('css/maicons.css') }}">
 
@@ -44,6 +46,18 @@
         <div class="card">
             <div class="card-header fw-bold fs-4">Daftar Buku</div>
             <div class="card-body">
+                <!-- Search form -->
+                <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main" method="GET" action="{{ route('search.books') }}">
+                    @csrf
+                    <div class="form-group mb-0">
+                        <div class="input-group input-group-alternative input-group-merge">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-world"></i></span>
+                            </div>
+                            <input class="form-control" placeholder="Search" type="text" name="cari">
+                        </div>
+                    </div>
+                </form>
                 <br>
                 <a class="btn btn-primary mb-2" href="{{ route('view.add.book') }}">➕ Tambah Buku</a>
                 @if (Session::has('success'))
@@ -76,25 +90,25 @@
                         <th>📚 Stok</th>
                         <th>⭐ <p>Aksi</p></th>
                     </tr>
-                    @if ($bukus->isNotEmpty())
-                        @foreach ($bukus as $buku)
+                    @if ($books->isNotEmpty())
+                        @foreach ($books as $book)
                             <tr>
-                                <td>{{ $buku->idbuku }}</td>
-                                <td>{{ $buku->isbn }}</td>
-                                <td>{{ $buku->judul }}</td>
-                                <td>@if ($buku->idkategori === 1) Novel @elseif ($buku->idkategori === 2) Fiksi @elseif ($buku->idkategori === 3) Cerpen @else Lainnya @endif</td>
-                                <td>{{ $buku->pengarang }}</td>
-                                <td>{{ $buku->penerbit }}</td>
-                                {{-- <td>{{ $buku->kota_penerbit }}</td> --}}
-                                {{-- <td>{{ $buku->editor }}</td> --}}
-                                {{-- <td>{{ $buku->file_gambar }}</td> --}}
-                                {{-- <td>{{ $buku->stok }}</td> --}}
-                                <td>{{ $buku->stok_tersedia }}</td>
+                                <td>{{ $book->idbuku }}</td>
+                                <td>{{ $book->isbn }}</td>
+                                <td>{{ $book->judul }}</td>
+                                <td>@if ($book->idkategori === 1) Novel @elseif ($book->idkategori === 2) Fiksi @elseif ($book->idkategori === 3) Cerpen @else Lainnya @endif</td>
+                                <td>{{ $book->pengarang }}</td>
+                                <td>{{ $book->penerbit }}</td>
+                                {{-- <td>{{ $book->kota_penerbit }}</td> --}}
+                                {{-- <td>{{ $book->editor }}</td> --}}
+                                {{-- <td>{{ $book->file_gambar }}</td> --}}
+                                {{-- <td>{{ $book->stok }}</td> --}}
+                                <td>{{ $book->stok_tersedia }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-info my-1" style="color: #F6F5FC"
-                                        href="edit-book/{{ $buku->idbuku }}">🔧Edit</a>
+                                        href="edit-book/{{ $book->idbuku }}">🔧Edit</a>
                                     <a class="btn btn-danger btn-sm" style="color: #F6F5FC"
-                                        href="delete-book/{{ $buku->idbuku }}">🗑️Hapus</a>
+                                        href="delete-book/{{ $book->idbuku }}">🗑️Hapus</a>
                                 </td>
                             </tr>
                         @endforeach
