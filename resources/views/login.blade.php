@@ -24,6 +24,8 @@
     <!-- Icons -->
     <link rel="stylesheet" href="{{ URL::asset('vendor/nucleo/css/nucleo.css') }}" type="text/css">
 
+    <link rel="icon" href="{{ URL::asset('img/brand/favicon.png') }}" type="image/png">
+
     <link rel="stylesheet" href="{{ URL::asset('css/maicons.css') }}">
 
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">
