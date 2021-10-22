@@ -69,8 +69,8 @@
                         <th>🚩 Kategori</th>
                         <th>✏ Pengarang</th>
                         <th>🏢 <p>Penerbit</p></th>
-                        <th>🌃 <p>Kota</p></th>
-                        <th>🖊 <p>Editor</p></th>
+                        {{-- <th>🌃 <p>Kota</p></th> --}}
+                        {{-- <th>🖊 <p>Editor</p></th> --}}
                         {{-- <th>Gambar</th> --}}
                         {{-- <th>📓 Jumlah</th> --}}
                         <th>📚 Stok</th>
@@ -85,8 +85,8 @@
                                 <td>@if ($buku->idkategori === 1) Novel @elseif ($buku->idkategori === 2) Fiksi @elseif ($buku->idkategori === 3) Cerpen @else Lainnya @endif</td>
                                 <td>{{ $buku->pengarang }}</td>
                                 <td>{{ $buku->penerbit }}</td>
-                                <td>{{ $buku->kota_penerbit }}</td>
-                                <td>{{ $buku->editor }}</td>
+                                {{-- <td>{{ $buku->kota_penerbit }}</td> --}}
+                                {{-- <td>{{ $buku->editor }}</td> --}}
                                 {{-- <td>{{ $buku->file_gambar }}</td> --}}
                                 {{-- <td>{{ $buku->stok }}</td> --}}
                                 <td>{{ $buku->stok_tersedia }}</td>

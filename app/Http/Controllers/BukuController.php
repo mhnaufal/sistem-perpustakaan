@@ -6,6 +6,7 @@ use App\Models\Buku;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class BukuController extends Controller
 {
@@ -38,6 +39,14 @@ class BukuController extends Controller
     /* Proses membuat buku baru */
     public function createBook(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'isbn' => 'required | min:13',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()->with('error', 'Pastikan mengisi data buku dengan benar!');
+        }
+
         $isbn = $request->isbn;
         $judul = $request->judul;
         $kategori = $request->kategori;
@@ -45,27 +54,28 @@ class BukuController extends Controller
         $penerbit = $request->penerbit;
         $kota = $request->kota;
         $editor = $request->editor;
-        $gambar = $request->file_gambar;
+        $gambar = $request->file('gamabar')->store('public/images');
         $jumlah = $request->stok;
-        $stok = $request->stok_tersedia;
+        $stok = $request->tersedia;
 
         $book = new Buku();
         $book->isbn = $isbn;
         $book->judul = $judul;
-        $book->kategori = $kategori;
+        $book->idkategori = $kategori;
         $book->pengarang = $pengarang;
         $book->penerbit = $penerbit;
-        $book->kota = $kota;
+        $book->kota_penerbit = $kota;
         $book->editor = $editor;
-        $book->gambar = $gambar;
-        $book->jumlah = $jumlah;
-        $book->stok = $stok;
+        $book->file_gambar = $gambar;
+        $book->stok = $jumlah;
+        $book->stok_tersedia = $stok;
 
 
         try {
             $book->save();
             return redirect()->route('view.books')->with('success', '✔️ Data buku berhasil ditambahkan!');
         } catch (\Throwable $th) {
+            dd($th);
             return redirect()->route('view.books')->with('error', '❌ Gagal menambahkan data buku!');
         }
     }

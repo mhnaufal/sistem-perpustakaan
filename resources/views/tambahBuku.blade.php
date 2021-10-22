@@ -45,7 +45,7 @@
             <div class="card-header fw-bold fs-4">Tambah Buku Baru</div>
             <div class="card-body">
                 <br>
-                <form action="{{ route('add.book') }}" autocomplete="on" method="post">
+                <form action="{{ route('add.book') }}" autocomplete="on" method="post" enctype="multipart/form-data">
                     @csrf
                     @if (session('errors'))
                         <ul>
@@ -121,8 +121,8 @@
                         <div class="form-group row">
                             <label for="gambar" class="col-sm-2 col-form-label">Gambar : </label>
                             <div class="col-sm-10">
-                                <input type="file" name="gambar" id="gambar" class="form-control"
-                                    placeholder="Masukkan gambar buku" required><br>
+                                <input type="file" name="gamabar" id="gambar" class="form-control"
+                                    placeholder="Masukkan gambar buku"><br>
                             </div>
                         </div>
                         <div class="form-group row">
