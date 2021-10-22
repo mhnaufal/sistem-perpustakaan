@@ -4,6 +4,20 @@
 
 ---
 
+## Akun untuk coba-coba
+
+_nyobanya di server deployment di atas yaa_
+
+### Petugas 👮
+email: suhell@unchdeep.ac.id
+password: 12341234
+
+### Anggota 👧
+email: lifeat@unchdeep.ac.id
+password: 12341234
+
+---
+
 ## Cara nge run
 
 #### 0. Download & install [git](https://git-scm.com/). Buka cmd atau powershell atau terminal...
