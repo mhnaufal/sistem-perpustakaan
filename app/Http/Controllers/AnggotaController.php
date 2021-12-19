@@ -6,6 +6,7 @@ use App\Models\Anggota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class AnggotaController extends Controller
@@ -13,7 +14,8 @@ class AnggotaController extends Controller
     /* Menampilkan semua anggota yang terdaftar */
     public function showAllMembers(Request $request)
     {
-        $members = Anggota::get();
+        // $members = Anggota::get();
+        $members = Http::get('https://pbp-siperpus.herokuapp.com/anggota')->collect();
 
         if (Auth::guard('petugas')->check()) {
             $user = Auth::guard('petugas')->user()->nama ?? 'Mawar';
@@ -83,6 +85,15 @@ class AnggotaController extends Controller
         $member->no_telp = $no_telp;
 
         try {
+            $api = Http::withHeaders(['Content-Type' => 'application/json'])->post('https://pbp-siperpus.herokuapp.com/anggota', [
+                'id' => $request->nim,
+                'nama' => $request->nama,
+                'password' => $request->password,
+                'alamat' => $request->alamat,
+                'kota' => $request->kota,
+                'email' => $request->email,
+                'no_telp' => $request->no_telp,
+            ]);
             $member->save();
             return redirect()->route('view.members')->with('success', '✔️ Data anggota berhasil ditambahkan!');
         } catch (\Throwable $th) {

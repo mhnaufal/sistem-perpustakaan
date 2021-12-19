@@ -69,7 +69,7 @@
                         <th>📧 Email</th>
                         <th>📞 No. Telepon</th>
                     </tr>
-                    @if ($members->isNotEmpty())
+                    {{-- @if ($members->isNotEmpty())
                         @foreach ($members as $member)
                             <tr>
                                 <td>{{ $member->nim }}</td>
@@ -77,6 +77,21 @@
                                 <td>{{ $member->alamat }}</td>
                                 <td>{{ $member->email }}</td>
                                 <td>{{ $member->no_telp }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <div>
+                            <p class="card-text">Anggota kosong!</p>
+                        </div>
+                    @endif --}}
+                    @if ($members->isNotEmpty())
+                        @foreach ($members as $member)
+                            <tr>
+                                <td>{{ $member['id'] }}</td>
+                                <td>{{ $member['nama'] }}</td>
+                                <td>{{ $member['alamat'] }}</td>
+                                <td>{{ $member['email'] }}</td>
+                                <td>{{ $member['no_telp'] }}</td>
                             </tr>
                         @endforeach
                     @else
